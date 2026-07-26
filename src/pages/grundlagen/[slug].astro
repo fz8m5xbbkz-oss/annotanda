@@ -1,0 +1,169 @@
+---
+import Basis from '../../layouts/Basis.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const grundlagen = await getCollection('grundlagen');
+  return grundlagen.map((eintrag) => ({
+    params: { slug: eintrag.id },
+    props: { eintrag },
+  }));
+}
+
+const { eintrag } = Astro.props;
+const { Content } = await render(eintrag);
+
+const datum = eintrag.data.date.toLocaleDateString('de-DE', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+});
+
+// 200 Wörter/Minute, aufgerundet, mindestens 1
+const woerter = (eintrag.body ?? '').split(/\s+/).filter(Boolean).length;
+const lesezeit = Math.max(1, Math.round(woerter / 200));
+---
+
+<Basis titel={`${eintrag.data.title} — annotanda`} leserModus={true}>
+  <div class="fortschritt" aria-hidden="true"></div>
+  <article>
+    <a href="/grundlagen/" class="zurueck">← Grundlagen</a>
+    <header class="kopf">
+      <p class="meta">
+        Grundlagen
+        <span aria-hidden="true"> · </span>
+        {datum}
+        <span aria-hidden="true"> · </span>
+        <span>{lesezeit} Min. Lesezeit</span>
+      </p>
+      <h1>{eintrag.data.title}</h1>
+    </header>
+    <Content />
+    <p class="schluss" aria-hidden="true">⁂</p>
+    {eintrag.data.substack_url && (
+      <p class="substack">
+        <a href={eintrag.data.substack_url} target="_blank" rel="noopener noreferrer">
+          auch auf Substack ↗
+        </a>
+      </p>
+    )}
+  </article>
+</Basis>
+
+<style>
+  /* Nur im Reader Mode (mobile) sichtbar — Rücknavigation ohne globalen Header */
+  .zurueck {
+    display: none;
+    font-family: var(--schrift-ui);
+    font-size: 0.85rem;
+    color: var(--grau);
+    text-decoration: none;
+    margin-bottom: 2rem;
+    transition: transform 0.35s var(--feder), color 0.15s ease;
+  }
+
+  .zurueck:hover {
+    color: var(--ink);
+    transform: translateX(-5px);
+  }
+
+  @media (max-width: 640px) {
+    .zurueck {
+      display: block;
+    }
+  }
+
+  article {
+    animation: einblenden 0.5s ease-out both;
+  }
+
+  .kopf {
+    margin-bottom: 2rem;
+  }
+
+  .kopf h1 {
+    animation: aufklaren 0.7s ease-out 80ms both;
+  }
+
+  .meta {
+    font-family: var(--schrift-ui);
+    font-size: 0.85rem;
+    color: var(--grau);
+    margin: 0 0 0.5rem;
+    letter-spacing: 0.02em;
+    animation: einblenden 0.5s ease-out 250ms both;
+  }
+
+  article :global(p) {
+    margin: 0 0 1rem;
+  }
+
+  article :global(blockquote) {
+    border-left: 2px solid var(--akzent);
+    margin: 1.5rem 0;
+    padding: 0.25rem 0 0.25rem 1rem;
+    color: var(--grau);
+    font-style: italic;
+  }
+
+  article :global(em) {
+    font-style: italic;
+  }
+
+  /* Asterismus als Schlusszeichen — klassische Druckertradition */
+  .schluss {
+    text-align: center;
+    color: var(--akzent);
+    font-size: 1.2rem;
+    margin: 3rem 0 0;
+    user-select: none;
+  }
+
+  /* Substack-Hinweis unter dem Asterismus — dieselbe Sprache wie in der Liste. */
+  .substack {
+    text-align: center;
+    margin: 1.25rem 0 0;
+    font-family: var(--schrift-ui);
+    font-size: 0.85rem;
+  }
+
+  .substack a {
+    color: var(--grau);
+    text-decoration: none;
+    border-bottom: 1px solid var(--linie);
+    padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .substack a:hover {
+    color: var(--akzent);
+    border-color: var(--akzent);
+  }
+
+  .fortschritt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--akzent);
+    box-shadow: 0 0 6px var(--akzent);
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: 10;
+  }
+</style>
+
+<script>
+  // Skaliert den Balken proportional zur Scroll-Position — passiv, kein Layout-Thrashing
+  const balken = document.querySelector('.fortschritt') as HTMLElement | null;
+  if (balken) {
+    const zeichne = () => {
+      const html = document.documentElement;
+      const max = html.scrollHeight - html.clientHeight;
+      balken.style.transform = `scaleX(${max > 0 ? html.scrollTop / max : 0})`;
+    };
+    addEventListener('scroll', zeichne, { passive: true });
+    zeichne();
+  }
+</script>

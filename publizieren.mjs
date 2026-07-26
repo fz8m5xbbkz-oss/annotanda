@@ -38,9 +38,11 @@ const VAULT_BASIS = join(
 );
 const ESSAY_VAULT = join(VAULT_BASIS, 'annotanda Essays');
 const RESUEMEE_VAULT = join(VAULT_BASIS, 'annotanda Bücher');
+const GRUNDLAGEN_VAULT = join(VAULT_BASIS, 'annotanda Grundlagen');
 const SEITEN_VAULT = join(VAULT_BASIS, 'annotanda Seiten');
 const ESSAY_ORDNER = join(__dir, 'src/content/essays');
 const RESUEMEE_ORDNER = join(__dir, 'src/content/buecher');
+const GRUNDLAGEN_ORDNER = join(__dir, 'src/content/grundlagen');
 
 // ── Hilfsfunktionen ───────────────────────────────────────────────────────
 
@@ -409,6 +411,7 @@ const kandidaten = []; // { art, label, ziel, inhalt, url }
 const argumentListe = []; // { slug, titel, diagramm, datum } — für argumente.js
 const fertigeEssays = []; // { datei, vault, slug, titel, ziel, url, substackUrl, baueInhalt }
 const fertigeResuemees = []; // dieselbe Form — für den gemeinsamen Substack-Schritt
+const fertigeGrundlagen = []; // ebenso
 
 if (existsSync(ESSAY_VAULT)) {
   for (const datei of readdirSync(ESSAY_VAULT)) {
@@ -548,6 +551,67 @@ if (existsSync(RESUEMEE_VAULT)) {
   }
 }
 
+// ── Grundlagen sammeln ──────────────────────────────────────────────────────
+// Dritte Textform: erklärende, immergrüne Texte. Wie die Resümees — Notiz mit
+// `# Titel`, status:fertig, eigene Datei in src/content/grundlagen/. Kein
+// Argument-Diagramm, keine Lektüre-Bindung.
+
+if (existsSync(GRUNDLAGEN_VAULT)) {
+  for (const datei of readdirSync(GRUNDLAGEN_VAULT)) {
+    if (!datei.endsWith('.md') || datei.startsWith('_')) continue;
+
+    const roh = readFileSync(join(GRUNDLAGEN_VAULT, datei), 'utf-8');
+    const { daten, body } = parseFrontmatter(roh);
+    if (daten.status !== 'fertig') continue;
+
+    const h1 = body.match(/^\s*#\s+(.+)$/m);
+    const titel = daten.title || h1?.[1].trim() || basename(datei, '.md');
+    const slug = slugify(daten.slug || titel);
+    const datum = daten.date || new Date().toISOString().split('T')[0];
+
+    const text = bereinige(body.replace(/^\s*#\s+.+\r?\n+/, ''), slugMap);
+    if (!text) {
+      console.log(`· „${titel}" ist noch leer — übersprungen.`);
+      continue;
+    }
+
+    const baueInhalt = (substackUrl) => {
+      const frontmatter = [
+        '---',
+        `title: "${titel.replace(/"/g, '\\"')}"`,
+        `date: ${datum}`,
+        ...(substackUrl ? [`substack_url: "${substackUrl}"`] : []),
+        '---',
+      ].join('\n');
+      return `${frontmatter}\n\n${text}\n`;
+    };
+
+    const ziel = join(GRUNDLAGEN_ORDNER, `${slug}.md`);
+    const url = `https://www.annotanda.com/grundlagen/${slug}/`;
+
+    fertigeGrundlagen.push({
+      datei,
+      vault: GRUNDLAGEN_VAULT,
+      slug,
+      titel,
+      ziel,
+      url,
+      substackUrl: daten.substack_url || null,
+      baueInhalt,
+    });
+
+    const inhalt = baueInhalt(daten.substack_url);
+    if (existsSync(ziel) && readFileSync(ziel, 'utf-8') === inhalt) continue;
+    kandidaten.push({
+      art: existsSync(ziel) ? 'aktualisiert' : 'neu',
+      label: `Grundlagen: ${titel}`,
+      ziel,
+      inhalt,
+      url,
+    });
+  }
+}
+
 // ── Argument-Karten aus den Essays generieren ───────────────────────────────
 // Nur wenn mindestens ein fertiger Essay einen ```mermaid-Block hat — sonst
 // bleibt eine evtl. noch von Hand gepflegte argumente.js unangetastet.
@@ -618,7 +682,9 @@ for (const seite of SEITEN) {
 // Bewusst ALLE, nicht nur die geänderten: der Normalfall ist „letzten Sonntag
 // veröffentlicht, jetzt drüben online" — da hat sich am Text nichts getan, nur
 // der Link kommt dazu.
-const ohneSubstack = [...fertigeEssays, ...fertigeResuemees].filter((e) => !e.substackUrl);
+const ohneSubstack = [...fertigeEssays, ...fertigeResuemees, ...fertigeGrundlagen].filter(
+  (e) => !e.substackUrl
+);
 
 if (kandidaten.length === 0 && ohneSubstack.length === 0) {
   console.log('\nNichts zu veröffentlichen — keine fertigen, geänderten Essays');

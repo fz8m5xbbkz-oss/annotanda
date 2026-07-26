@@ -28,6 +28,18 @@ const buecher = defineCollection({
   }),
 });
 
+// Grundlagen — dritte Textform: erklärende, immergrüne Texte („Was ist X?").
+// Kein Sonntags-Takt, keine Meinung zu Ende gedacht, sondern Erschließung.
+// Wieder dieselbe Maschinerie wie Essays/Resümees.
+const grundlagen = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/grundlagen' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    substack_url: z.string().url().optional(),
+  }),
+});
+
 const felder = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/felder' }),
   schema: z.object({
@@ -36,4 +48,4 @@ const felder = defineCollection({
   }),
 });
 
-export const collections = { essays, buecher, felder };
+export const collections = { essays, buecher, grundlagen, felder };
