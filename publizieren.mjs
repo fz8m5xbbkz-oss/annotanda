@@ -129,6 +129,20 @@ function setzeSubstackImVault(vault, datei, url) {
   return true;
 }
 
+/** Titel einer Notiz bestimmen: Frontmatter `title` > erste `#`-Zeile > Dateiname. */
+function notizTitel(daten, body, datei) {
+  const h1 = body.match(/^\s*#\s+(.+)$/m);
+  return daten.title || h1?.[1].trim() || basename(datei, '.md');
+}
+
+/** true, wenn die Notiz eine ungerade Zahl von %% enthält — also ein
+ *  Werkstattblock geöffnet, aber nicht geschlossen wurde. Dann würde sein
+ *  privater Inhalt beim Publizieren öffentlich (bereinige entfernt nur
+ *  vollständige %%…%%-Paare). */
+function werkstattOffen(body) {
+  return ((body.match(/%%/g) || []).length % 2) === 1;
+}
+
 /** Findet eine Datei im Ordner unabhängig von Unicode-Normalisierung/Groß-Klein */
 function findeDatei(ordner, name) {
   if (!existsSync(ordner)) return null;
@@ -412,6 +426,7 @@ const argumentListe = []; // { slug, titel, diagramm, datum } — für argumente
 const fertigeEssays = []; // { datei, vault, slug, titel, ziel, url, substackUrl, baueInhalt }
 const fertigeResuemees = []; // dieselbe Form — für den gemeinsamen Substack-Schritt
 const fertigeGrundlagen = []; // ebenso
+const offeneWerkstatt = []; // Titel von Notizen mit ungeradem %% (offener Werkstattblock)
 
 if (existsSync(ESSAY_VAULT)) {
   for (const datei of readdirSync(ESSAY_VAULT)) {
@@ -420,6 +435,7 @@ if (existsSync(ESSAY_VAULT)) {
     const roh = readFileSync(join(ESSAY_VAULT, datei), 'utf-8');
     const { daten, body } = parseFrontmatter(roh);
     if (daten.status !== 'fertig') continue;
+    if (werkstattOffen(body)) offeneWerkstatt.push(notizTitel(daten, body, datei));
 
     const h1 = body.match(/^\s*#\s+(.+)$/m);
     const titel = daten.title || h1?.[1].trim() || basename(datei, '.md');
@@ -500,6 +516,7 @@ if (existsSync(RESUEMEE_VAULT)) {
     const roh = readFileSync(join(RESUEMEE_VAULT, datei), 'utf-8');
     const { daten, body } = parseFrontmatter(roh);
     if (daten.status !== 'fertig') continue;
+    if (werkstattOffen(body)) offeneWerkstatt.push(notizTitel(daten, body, datei));
 
     const h1 = body.match(/^\s*#\s+(.+)$/m);
     const titel = daten.title || h1?.[1].trim() || basename(datei, '.md');
@@ -563,6 +580,7 @@ if (existsSync(GRUNDLAGEN_VAULT)) {
     const roh = readFileSync(join(GRUNDLAGEN_VAULT, datei), 'utf-8');
     const { daten, body } = parseFrontmatter(roh);
     if (daten.status !== 'fertig') continue;
+    if (werkstattOffen(body)) offeneWerkstatt.push(notizTitel(daten, body, datei));
 
     const h1 = body.match(/^\s*#\s+(.+)$/m);
     const titel = daten.title || h1?.[1].trim() || basename(datei, '.md');
@@ -674,6 +692,19 @@ for (const seite of SEITEN) {
     seite: true,
     name: seite.name,
   });
+}
+
+// ── Schutz: offene Werkstattblöcke ──────────────────────────────────────────
+// Eine ungerade Zahl von %% heißt: ein Werkstattblock wurde nicht geschlossen.
+// Beim Publizieren würde sein privater Inhalt öffentlich (genau der
+// „Frei im Paragraphen"-Fehler). Lieber hart abbrechen, bevor irgendetwas
+// geschrieben oder gefragt wird, als versehentlich Privates veröffentlichen.
+if (offeneWerkstatt.length > 0) {
+  console.log('\n⚠  Abbruch — offener Werkstattblock (%% ohne schließendes %%):\n');
+  for (const t of offeneWerkstatt) console.log(`     • „${t}"`);
+  console.log('\n   Sonst würde die Werkstatt öffentlich. Schließ den Block mit einem');
+  console.log('   zweiten %% am Ende der Notiz und starte publizieren neu.\n');
+  process.exit(1);
 }
 
 // ── Nichts zu tun? ──────────────────────────────────────────────────────────
