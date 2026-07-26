@@ -2,6 +2,7 @@
 title: "Frei im Paragraphen"
 date: 2026-07-26
 substack_url: "https://open.substack.com/pub/luisfzl/p/frei-im-paragraphen?r=6fibu5&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
+steady_url: "https://steady.page/de/annotanda/posts/4d1b30d2-3dc4-41f8-9152-93a07edb043f?utm_campaign=steady_sharing_button"
 ---
 
 Wenn ein Beamter eine Entscheidung trifft, ist er dazu angeleitet, dies möglichst nach dem Gesetz zu tun. Dabei gibt es im Verwaltungsrecht zwei Grundtypen von Entscheidungen. Einer davon lautet „kann". Das heißt, der Beamte darf selber abwägen, wie er handelt. Das Gesetz lädt ihn dazu ein. Seine Entscheidung verliert ihrer Grenzen. Doch es ergeben sich neue. Handelt der Beamte beim Ermessen wirklich frei — oder determiniert die Norm seine Entscheidung schon, bevor er sie trifft?

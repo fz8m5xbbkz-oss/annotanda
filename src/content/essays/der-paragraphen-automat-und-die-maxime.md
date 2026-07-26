@@ -2,6 +2,7 @@
 title: "Der Paragraphen-Automat und die Maxime"
 date: 2026-07-19
 substack_url: "https://luisfzl.substack.com/p/der-paragraphen-automat-und-die-maxime"
+steady_url: "https://steady.page/de/annotanda/posts/0670b3da-b21a-4ddd-83fd-f6ad0ec14934?utm_campaign=steady_sharing_button"
 ---
 
 Wie ich schon im letzten meiner Essays schrieb, solle der Verwalter oder die Verwalterin laut Platon verwalten. Der Begriff der Verwaltung ist dabei vielschichtiger, als man denken mag. Herbert A. Simon beschrieb das Treffen von Entscheidungen als „Kernstück" der Verwaltung. Max Weber beschreibt den Entscheidungsprozess als „Paragraphenautomaten". Aus normativem Material wird also faktisches Material, woraus eine Entscheidung getroffen wird. Dabei fungiert die Norm jedoch, laut Hans Kelsen, als „Deutungsschema", woraus wiederum verschiedene Deutungen und Entscheidungen entstehen. Es ist also mehr als das strikte Halten an Gesetzen. Daraus ergibt sich eine Frage: Woran hält sich ein Beamter, wenn das Gesetz ihm die Entscheidung nicht abnimmt?
