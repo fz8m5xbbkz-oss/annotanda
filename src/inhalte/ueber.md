@@ -2,9 +2,10 @@
 
 Ich bin Luis. Ab September 2026 studiere ich Allgemeine Verwaltung. 
 
-**annotanda** ist mein Versuch, Verwaltung und Philosophie zusammenzudenken — und dort, wo der Staat zur Machtfrage wird, auch die Politik. Was passiert, wenn man Kant liest und gleichzeitig Bescheide schreibt? Was sagt Aristoteles über Bürokratie? Was lehrt der Staat über Freiheit? Philosophie — nicht als Hobby neben der Verwaltung, sondern als Denkwerkzeug darin.
+**annotanda** ist mein Versuch, Verwaltung, Politik und Philosophie zusammenzudenken — und dort, wo der Staat zur Machtfrage wird, auch die Politik. Was passiert, wenn man Kant liest und gleichzeitig Bescheide schreibt? Was sagt Aristoteles über Bürokratie? Was lehrt der Staat über Freiheit? Philosophie — nicht als Hobby neben der Verwaltung, sondern als Denkwerkzeug darin.
 
-Jeden Sonntag erscheint ein Essay. Ein Gedanke, der mich wirklich beschäftigt hat — zu Ende gedacht.
+Jeden Sonntag erscheint ein Essay. Ein Gedanke, der mich wirklich beschäftigt hat — zu Ende gedacht. 
+Hinzu kommen Buch-Resümees und informierende Texte.
 
 Längere Stücke erscheinen zuerst auf [Substack](https://luisfzl.substack.com). Notizen auf [Bluesky](https://bsky.app/profile/luis-57.bsky.social). Kontakt: luisfrenzel@gmx.net.
 
