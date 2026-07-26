@@ -25,7 +25,7 @@ liest er sie automatisch und ist sofort auf Stand. Bitte vor jeder substantielle
 | | |
 |---|---|
 | **Live-URL** | https://www.annotanda.com |
-| **GitHub-Repo** | https://github.com/fz8m5xbbkz-oss/annotanda |
+| **GitHub-Repo** | https://github.com/fz8m5xbbkz-oss/notitia — **heißt auf GitHub noch `notitia`**, nur das Projekt wurde umbenannt. Remote also `git@github.com:fz8m5xbbkz-oss/notitia.git` (geprüft 26.07.2026). |
 | **Substack** | https://luisfzl.substack.com |
 | **Bluesky** | https://bsky.app/profile/luis-57.bsky.social |
 | **Kontakt-Mail** | luisfrenzel@gmx.net (öffentlich, auf /ueber) |
@@ -82,7 +82,8 @@ src/
 │   │                             Collection einen Text hat (leere Rubrik = keine
 │   │                             Sackgasse; Sitemap-Filter in astro.config.mjs
 │   │                             folgt derselben Regel)
-│   ├── Footer.astro             Copyright + Buttons (Newsletter, Bluesky)
+│   ├── Footer.astro             Copyright + Knöpfe (Newsletter → Steady,
+│   │                             Substack, Unterstützen, Bluesky)
 │   ├── Vignette.astro           SVG-Buchschmuck, ein Motiv pro Seite
 │   ├── SokratesBueste.astro     gezeichneter Sokrates auf /ueber
 │   └── Randschmuck.astro        Ranken in den Seitenrändern (nur Desktop ≥1200px)
@@ -179,7 +180,9 @@ und sollte nicht mehr benutzt werden.
 - **Keine Stockbilder.** Bilder werden, falls nötig, von Wikimedia Commons mit
   CC-Lizenz und korrekter Attribution geholt — oder Luis liefert sie selbst.
 - **Kein automatischer Bluesky-Feed auf der Startseite.** War drin, bewusst entfernt.
-- **Kein Newsletter-Formular im Footer.** Nur zwei Buttons: „Newsletter" + „Bluesky".
+- **Kein Newsletter-Formular im Footer.** Nur Knöpfe, die wegführen:
+  „Newsletter" (→ Steady-Anmeldung, seit Juli 2026 nicht mehr Substack),
+  „Substack", „Unterstützen", „Bluesky".
 - **Kein Magazin-Editorial-Layout.** Einmal gebaut, nach Luis-Feedback zurückgerollt.
   Nicht nochmal versuchen, außer Luis fragt explizit.
 - **Kein Steady-`widget_loader` im `<head>`, kein eingebetteter Steady-Checkout,
