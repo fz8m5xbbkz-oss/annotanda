@@ -473,6 +473,10 @@ if (existsSync(ESSAY_VAULT)) {
         `title: "${titel.replace(/"/g, '\\"')}"`,
         `date: ${datum}`,
         ...(substackUrl ? [`substack_url: "${substackUrl}"`] : []),
+        ...(daten.bild ? [`bild: "${daten.bild}"`] : []),
+        ...(daten.bild_untertitel
+          ? [`bild_untertitel: "${daten.bild_untertitel.replace(/"/g, '\\"')}"`]
+          : []),
         '---',
       ].join('\n');
       return `${frontmatter}\n\n${text}\n`;

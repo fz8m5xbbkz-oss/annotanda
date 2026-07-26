@@ -11,6 +11,10 @@ const essays = defineCollection({
     themengebiet: z.string().optional(),
     unterthema: z.string().optional(),
     substack_url: z.string().url().optional(),
+    // Optionales getöntes Kopfbild (Pfad in public/, z. B. /bilder/kamiros.jpg)
+    // plus Bildunterschrift. Bewusste Ausnahme von der bildlosen Optik.
+    bild: z.string().optional(),
+    bild_untertitel: z.string().optional(),
   }),
 });
 

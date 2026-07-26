@@ -31,6 +31,12 @@ const lesezeit = Math.max(1, Math.round(woerter / 200));
   <div class="fortschritt" aria-hidden="true"></div>
   <article>
     <a href="/essays/" class="zurueck">← Essays</a>
+    {essay.data.bild && (
+      <figure class="kopfbild">
+        <img src={essay.data.bild} alt={essay.data.bild_untertitel ?? essay.data.title} loading="eager" />
+        {essay.data.bild_untertitel && <figcaption>{essay.data.bild_untertitel}</figcaption>}
+      </figure>
+    )}
     <header class="kopf">
       <p class="meta">
         {datum}
@@ -55,6 +61,30 @@ const lesezeit = Math.max(1, Math.round(woerter / 200));
       </p>
     )}
   </article>
+  {essay.data.bild && (
+    <svg class="duotone-defs" width="0" height="0" aria-hidden="true" focusable="false">
+      <defs>
+        <!-- Tinte-auf-Papier: Schatten → dunkles Oliv-Tinte, Lichter → Papierton -->
+        <filter id="annotanda-duotone" color-interpolation-filters="sRGB">
+          <feColorMatrix type="saturate" values="0" />
+          <feComponentTransfer>
+            <feFuncR type="table" tableValues="0.125 0.925" />
+            <feFuncG type="table" tableValues="0.141 0.894" />
+            <feFuncB type="table" tableValues="0.102 0.827" />
+          </feComponentTransfer>
+        </filter>
+        <!-- Dunkelmodus: Schatten → fast schwarz, Lichter → warmes Elfenbein -->
+        <filter id="annotanda-duotone-dunkel" color-interpolation-filters="sRGB">
+          <feColorMatrix type="saturate" values="0" />
+          <feComponentTransfer>
+            <feFuncR type="table" tableValues="0.078 0.902" />
+            <feFuncG type="table" tableValues="0.078 0.875" />
+            <feFuncB type="table" tableValues="0.063 0.816" />
+          </feComponentTransfer>
+        </filter>
+      </defs>
+    </svg>
+  )}
 </Basis>
 
 <style>
@@ -82,6 +112,43 @@ const lesezeit = Math.max(1, Math.round(woerter / 200));
 
   article {
     animation: einblenden 0.5s ease-out both;
+  }
+
+  /* Getöntes Kopfbild — bewusste Ausnahme von der bildlosen Optik.
+     Duotone-Filter (Tinte/Oliv auf Papier) bindet das Foto in die Farbwelt ein;
+     der Filter wird pro Farbschema getauscht (siehe SVG-defs am Seitenende). */
+  .kopfbild {
+    margin: 0 0 2.5rem;
+  }
+
+  .kopfbild img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    object-fit: cover;
+    object-position: center 45%;
+    border: 1px solid var(--linie);
+    filter: url(#annotanda-duotone);
+  }
+
+  :global(html[data-farbschema='dunkel']) .kopfbild img {
+    filter: url(#annotanda-duotone-dunkel);
+  }
+
+  .kopfbild figcaption {
+    margin-top: 0.5rem;
+    font-family: var(--schrift-ui);
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--grau);
+  }
+
+  .duotone-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    pointer-events: none;
   }
 
   .kopf {
