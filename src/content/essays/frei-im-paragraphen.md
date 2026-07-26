@@ -1,0 +1,112 @@
+---
+title: "Frei im Paragraphen"
+date: 2026-07-26
+substack_url: "https://open.substack.com/pub/luisfzl/p/frei-im-paragraphen?r=6fibu5&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
+---
+
+Wenn ein Beamter eine Entscheidung trifft, ist er dazu angeleitet, dies möglichst nach dem Gesetz zu tun. Dabei gibt es im Verwaltungsrecht zwei Grundtypen von Entscheidungen. Einer davon lautet „kann". Das heißt, der Beamte darf selber abwägen, wie er handelt. Das Gesetz lädt ihn dazu ein. Seine Entscheidung verliert ihrer Grenzen. Doch es ergeben sich neue. Handelt der Beamte beim Ermessen wirklich frei — oder determiniert die Norm seine Entscheidung schon, bevor er sie trifft?
+
+In seinem Buch „Was bedeutet das alles?" charakterisiert Thomas Nagel das Problem des freien Willens anhand eines banalen Beispiels, in welchem man zwischen einer Schokoladentorte und einem Pfirsich wählt. In diesem Fall entscheidet man sich für die Torte. Vor dem Entschluss stand nicht fest, was man wählt — erst mit dem Griff zur Torte. Danach denkt man: „Ich hätte doch den Pfirsich nehmen sollen." Doch wäre das möglich gewesen? Der Gedanke besagt, man hätte unter gleichen Umständen den Pfirsich nehmen können, obwohl in der Wirklichkeit das Gegenteil passiert ist.
+
+Zu diesem Problem gibt es mehrere Positionen. Eine davon ist der Determinismus. Dieser behauptet, es sei im absoluten Sinne niemals möglich, anders zu handeln, als man tatsächlich handelt. Die vorangehenden Umstände bestimmen unser Handeln und lassen uns keine wirkliche Wahl. Selbst wenn man sich dies bewusst mache, verändere es lediglich die Ausgangsbedingungen. Die Vorhersagbarkeit steht dabei nicht zur Debatte. Nagel formuliert das wie folgt: „Die Hypothese besagt, dass es Naturgesetze wie jene, welchen die Bewegung der Planeten unterworfen ist, gibt, die alles bestimmen, was in der Welt geschieht, und dass die vor einer Handlung bestehenden Umstände kraft solcher Gesetze wohl festlegen, dass die Handlung erfolgen wird, als auch jede andere Möglichkeit ausschließen." Unsere Entscheidungen stünden damit vor unserer Geburt fest — auch die, die Torte zu nehmen. Eine wirkliche Freiheit nach dem deterministischen Verständnis wäre damit nicht möglich.
+
+Bewahrheitet sich der Determinismus, hat das Konsequenzen: die Verantwortung für Taten müsse grundsätzlich infrage gestellt werden, da jede Handlung durch vorangehende Umstände vorbestimmt sei. Doch eine fehlende Verantwortlichkeit mache die schlechte Handlung nicht ungeschehen. Es bleibe sinnvoll, jemanden zu tadeln: nicht als moralisches Urteil, sondern als Versuch, sein künftiges Verhalten zu beeinflussen.
+
+Gegner des Determinismus verweisen auf die Idee des freien Willens. Laut ihnen hätte man sich im gleichen Moment auch für den Pfirsich entscheiden können. Doch auch diese Position hat ein Problem: Wünsche, Überzeugungen und Charakter würden keine Rolle mehr bei der Entscheidung spielen. Die Entscheidung würde ohne Erklärung einfach geschehen. Inwiefern wäre eine Entscheidung dann noch meine Entscheidung? Thomas Nagel kommt zum Schluss, dass der Unterschied zwischen freiem Geschehen und freiem Handeln nicht erklärbar ist: „Freies Handeln ist ein Grundbestandteil der Welt und kann nicht weiter analysiert werden. Es gibt einen Unterschied zwischen einem Geschehen, das sich ohne jede Ursache einfach bloß ereignet, und einer Tat, die ohne jede Ursache einfach getan wird. Diesen Unterschied verstehen wir alle, wenn wir ihn auch nicht erklären können." Die beiden Positionen lassen uns in einer Sackgasse stehen, die wie folgt beschrieben wird: „Wenn der Determinismus wahr ist, dann sind die vorangegangenen Umstände verantwortlich. Wenn der Determinismus falsch ist, so ist nichts verantwortlich."
+
+Eine dritte Position versucht den Ausweg: der Kompatibilismus. Er meint, unsere Verantwortlichkeit setze voraus, dass unsere Handlungen determiniert seien. Freiheit sei, aus den eigenen Wünschen heraus handeln zu können. Man wünschte sich die Torte mehr als den Pfirsich — man tat dies aktiv, es geschah nicht einfach. Der Determinismus wäre keine Bedrohung der Freiheit, denn ein Zwang zur Wahl der Torte wäre keine freie Entscheidung gewesen. Freies Handeln setze demnach nur voraus, dass es aus der „gewohnten psychischen Art" entstehe.
+
+Doch auch hier entwickelt sich ein Problem: Wenn jegliche Handlung durch die eigene psychische Verfassung vorherbestimmt wäre, wäre man letztlich wie eine Marionette — zu keinerlei Verantwortung heranzuziehen. Nagel schließt seinen Gedankengang mit zwei offenen Fragen: Was meinen wir eigentlich, wenn wir sagen „Ich hätte mich auch anders entscheiden können"? Und wie müssten wir und die Welt beschaffen sein, damit das wahr sein kann? Beide Fragen bleiben unbeantwortet und stellen ein bis heute ungelöstes Problem der Philosophie dar.
+
+Der amerikanische Physiologe Benjamin Libet versuchte die Willensfreiheit in einem Experiment zu beweisen, indem er untersuchen wollte, wie und wann Handlungen ausgelöst werden. Mit einem EEG und einem EMG wollte man die Muskel- und Gehirnaktivität der Versuchspersonen messen. Dabei gab es zwei Gruppen. Die erste Gruppe war die Planungsgruppe: Die Probanden sollten eine Handlung für einen bestimmten, im Voraus festgelegten Zeitpunkt planen — sie dann aber kurz vorher bewusst abbrechen. Die zweite Gruppe handelte spontan: Die Probanden sollten ganz ohne Planung den Drang verspüren, eine Bewegung auszuführen, und diesen Impuls dann im letzten Moment willentlich stoppen. Der Unterschied war entscheidend — einmal geplant, einmal ungeplant. Libet wollte wissen: Macht das einen Unterschied dafür, wann das Gehirn aktiv wird? Das Ergebnis war ernüchternd: Das Gehirn war bereits 550 ms vor der Handlung aktiv — das Bewusstsein bemerkte den Impuls erst 200 ms vorher. Das EEG zeigte, dass sich im Gehirn bereits unbewusst Bereitschaftspotenzial aufgebaut hatte. Da die Bewegung aber blockiert wurde und nicht stattfand, schloss Libet daraus, dass unser Bewusstsein eine unbewusst eingeleitete Handlung im letzten Moment per Veto stoppen kann. Einen freien Willen gäbe es jedoch demnach nicht. Doch da es sich um eine folgenlose, spontane Entscheidung handelte, es keinen wirklichen Entscheidungsprozess gab und das Veto kein wirkliches Veto darstellte. Es war ja bereits bewusst , dass die Probanden die Handlung abbrechen würden. Auch deeswegen wird der Versuch als kritisch betrachtet.
+
+Dennoch spielt das Experiment bis heute in Philosophie und Neurowissenschaft eine große Rolle und stärkt die Idee des Determinismus. Es kann als ein weiterer Beleg dafür verwendet werden, dass Beamtinnen und Beamte, selbst wenn ihnen das Recht Freiheit gibt, nicht völlig frei entscheiden können und durch andere Faktoren bestimmt werden. Unsere Idee der selbstständigen Entscheidung wird hinfällig. Selbst das bewiesene Vetorecht verliert sich in der Determiniertheit der Entscheidung, das Veto einzusetzen.
+
+Die Philosophen Sigmund Freud und Alfred Adler bringen ein weiteres Merkmal in die Idee des Determinismus: das Unbewusste. Sigmund Freud spricht von einem Menschen, der aus drei Teilen besteht: dem Es, das teilweise angeboren ist und Lüsten, Trieben und der Libido unterliegt; dem Über-Ich, das Moral, Werte, Normen und Gebote vermittelt; und dem Ich, das zwischen beiden vermittelt. Dadurch ist der Mensch einerseits determiniert, da die Handlungen von Es und Über-Ich vorbestimmt sind, andererseits bleibt ihm die Freiheit, zwischen beiden abzuwägen. Mit dem Eisbergmodell veranschaulicht Freud die Idee des Bewussten und Unbewussten: Während Gedanken, Worte und Handlungen an der Oberfläche sichtbar sind, spielen sich Werte, Normen, Triebe, Wünsche und Bedürfnisse im Verborgenen ab. Wenn ein Beamter nun einen Antrag eines Menschen bearbeiten muss, den er persönlich nicht leiden kann, kann er abwägen. Während das Es versuchen wird, den Antrag abzulehnen, wird das Über-Ich auf den Wert der Gleichbehandlung verweisen. Ihm bleibt die Möglichkeit zu entscheiden, welchem Teil er nachgibt. Erneut stellt sich aber die Frage: War das dann seine freie Entscheidung — oder hat das Über-Ich gewonnen, weil die Norm so stark internalisiert ist, dass das Es gar keine Chance hatte?
+
+Alfred Adler, einst Wegbegleiter Freuds, dreht das Ganze um. Laut ihm wird der Mensch nicht von Trieben gedrängt, sondern von Zielen gezogen. Die zentrale Idee Adlers ist das Gemeinschaftsgefühl. Wenn es vorhanden ist, entstehen Vertrauen, Geborgenheit und ein gesundes Selbstbewusstsein. Fehlt es, können Minderwertigkeitsgefühle entstehen, die wiederum die Erfüllung der drei Lebensaufgaben — Gemeinschaft, Arbeit und Liebe — erschweren. Auch Adlers Theorie zeigt: Unsere Handlungen sind durch vorangehende Ereignisse geprägt — durch Erziehung, Umfeld und die Frage, ob das Gemeinschaftsgefühl gestärkt oder geschwächt wurde. Wenn der Beamte also entscheidet, entscheidet er da wirklich selbst — oder entscheiden Minderwertigkeitsgefühle und frühkindliche Prägungen? Entscheidet er aus Frust, die drei Lebensaufgaben nicht erfüllen zu können?
+
+Während Freud und Adler danach fragen, was den Menschen bestimmt, widerspricht der französische Philosoph Jean-Paul Sartre den Grundlagen ihrer Fragestellungen. Durch seine Auffassung verliert der Mensch die passive Rolle — sein aktives Handeln wird gewertet. Dadurch, dass der Mensch erst existiert und zunächst nichts ist, ist ihm Freiheit gegeben. Er definiert seine Essenz und schafft sich damit selbst. Es gibt keinen Gott, der Essenz oder Wertevorstellungen vorbestimmt. Damit trägt jeder Mensch Verantwortung für seine eigene Existenz. Jede Entscheidung setzt ein allgemeines Vorbild und betrifft damit die gesamte Menschheit. Der Mensch verantwortet sein Handeln also gegenüber allen. Er ist zur Freiheit verurteilt. Aus dieser Verantwortung kann er sich nicht herausreden. Er muss Bedeutung schaffen und handeln, ohne äußere Anleitung. Wer dieser Verantwortung ausweicht — wer sagt „Ich hatte keine Wahl" oder „Das ist Vorschrift" — handelt in mauvaise foi, in schlechtem Glauben. Er tut so, als wäre er ein Ding mit festgelegter Funktion. Die existenzialistische Position Sartres bildet einen grundlegenden Widerspruch zu den Vertretern des Determinismus. Der Beamte steht vor einer ganz neuen Aufgabe: Er trägt nun eine viel größere Verantwortung — nicht nur für seine eigene Existenz, sondern gegenüber allen Menschen. Er schafft durch seine Entscheidung seine Essenz, seine Werte, seine Existenz.
+
+Wenn der Beamte nun denkt, er kann frei entscheiden, steht er vor einer der größten Fragen der Philosophie, die bis heute nicht einheitlich beantwortet werden konnte. Er könnte versuchen, aus freien Stücken heraus zu entscheiden, könnte aber nie sicher sein, dies getan zu haben. Entscheidungen und Ereignisse vor seiner Existenz könnten dazu geführt haben, dass die Wahl, vor der er jetzt steht, eine Illusion ist. Gegenteiliges wird er nie beweisen können. Denn selbst wenn er sich anders entscheidet, aus Angst, determiniert zu sein, tut er dies aufgrund von vorangehenden Entscheidungen. Libet legte nahe, dass er sich schon viel früher entschieden hat. Freud zeigte, dass der Beamte nur Vermittler zwischen dem Es und dem Über-Ich ist — getrieben von Trieben und Unbewusstem. Adler hat gezeigt, dass frühkindliche Ereignisse und Minderwertigkeitsgefühle seine Entscheidungen prägen. Hält er am freien Willen fest, verliert die Entscheidung ihre Ursache und damit auch den Beamten als ihren Urheber. Auch Sartre löst die Sackgasse nicht auf — er verändert jedoch die Frage. Er sagt, dass der Beamte zur Freiheit verurteilt ist. Er trägt mit seinen Entscheidungen weitreichende Verantwortung gegenüber sich selbst und jedem anderen Menschen und muss durch eigene Werte und Normen seine Existenz schaffen. Er muss handeln. Selbst wenn er nicht handelt, entscheidet er sich aktiv dazu und trägt trotzdem Verantwortung. Egal ob er Existenzialist oder Determinist ist  — seine Verantwortung für die Handlung wird bestehen bleiben. Ob er will oder nicht.
+
+
+
+
+
+
+
+
+
+%%
+
+> Handelt der Beamte beim Ermessen wirklich frei — oder determiniert die Norm seine Entscheidung schon, bevor er sie trifft?
+
+## Idee
+
+- Ausgangspunkt: Nagel, *Was bedeutet das alles?*, Kap. 6 (*Der freie Wille*). Determinismus vs. Freiheit, übertragen auf den Verwaltungsalltag.
+- Das Ermessen verspricht Spielraum („kann" statt „muss"). Aber ist dieser Spielraum echte Freiheit — oder nur eine vom Gesetz vorgezeichnete Bahn, die sich frei anfühlt?
+- Pointe: Vielleicht ist der Beamte das beste Beispiel für die alte Frage. Er *erlebt* sich als frei und ist zugleich durch Norm, Verhältnismäßigkeit, Gleichbehandlung und Verwaltungsvorschrift gebunden wie kaum jemand.
+
+## Überschneidung
+
+⇄ **[Der Paragraphen-Automat und die Maxime](/essays/der-paragraphen-automat-und-die-maxime/)** — beide kreisen ums Ermessen:
+- *Frei im Paragraphen* fragt: **IST** der Beamte frei? (Willensfreiheit)
+- *Kant schreibt Bescheide* fragt: **WIE** soll er entscheiden? (Pflicht, Maxime)
+- Evtl. zusammenlegen oder als Zweiteiler denken.
+
+## Mögliche Struktur
+
+1. Eine Ermessensentscheidung — der Moment, in dem der Beamte „wählt"
+2. Nagels Determinismus-Problem: War die Wahl je offen?
+3. Der Paragraph als sanfter Determinismus: Bindung, die sich wie Freiheit anfühlt
+4. Offene Frage: Wollen wir freie Beamte — oder berechenbare?
+
+Material: 
+Nagels Problem:
+Das Ausgangsbeispiel
+
+Bei der Wahl zwischen Schokoladentorte und Pfirsich entscheidet man sich für die Torte, bereut es aber hinterher und denkt: „Ich hätte doch den Pfirsich nehmen sollen." Vor der Entscheidung stand nicht fest, was man wählen würde – die Wahl selbst hat das erst festgelegt. Aber stimmt das wirklich? Zu sagen „ich hätte den Pfirsich wählen können" heißt: Man hätte ihn wählen können, _obwohl alles andere bis zu diesem Moment exakt gleich verlaufen wäre_. Das lässt sich nicht damit erklären, dass man in anderen Situationen schon mal Obst gewählt hat – gemeint ist eine echte, offene Alternative im genau selben Moment.
+
+### Determinismus
+
+Der Determinismus behauptet: Es ist niemals in diesem absoluten Sinn möglich, anders zu handeln, als man tatsächlich handelt. Zwar hängt unser Handeln von Wünschen und Entscheidungen ab, aber die vorausgehenden Umstände machen jede Handlung unausweichlich. Das gilt unabhängig davon, ob wir alle Naturgesetze kennen und Vorhersagen treffen können – die Vorhersagbarkeit selbst steht nicht zur Debatte, nur die Festlegung durch Naturgesetze.
+
+> „Die Hypothese besagt, dass es Naturgesetze wie jene, welchen die Bewegung der Planeten unterworfen ist, gibt, die alles bestimmen, was in der Welt geschieht, und dass die vor einer Handlung bestehenden Umstände kraft solcher Gesetze wohl festlegen, dass die Handlung erfolgen wird, als auch jede andere Möglichkeit ausschließen."
+
+Wenn das stimmt, stand schon vor der eigenen Geburt fest, dass man in diesem Moment die Torte wählen würde. Es gäbe also keine wirkliche Freiheit – egal ob bei der Nachspeise oder bei der Wahl eines politischen Kandidaten.
+
+**Konsequenz:** Niemand könnte mehr für seine Taten verantwortlich gemacht werden, da diese aus vorher feststehenden Ursachen entstehen. Stiehlt jemand etwas, könnte man ihm das nicht mehr vorwerfen – man müsste es wie eine Naturkatastrophe behandeln. Trotzdem bleibt: Auch wenn ein Verhalten vorherbestimmt war, heißt das nicht, dass es nicht schlecht war. Man tadelt jemanden dann nicht, weil er „anders gekonnt hätte", sondern um sein künftiges Verhalten zu beeinflussen.
+
+### Willensfreiheit (libertäre Position)
+
+Diese Position behauptet: Man hätte tatsächlich auch anders wählen können, selbst wenn alles bis zu diesem Punkt identisch war. Das Problem: Dann hätten Wünsche, Überzeugungen und Charakter keine Rolle bei der Entscheidung gespielt – die Entscheidung „geschieht" einfach, ohne Erklärung. Aber inwiefern war sie dann noch _meine_ Entscheidung?
+
+> „Freies Handeln ist ein Grundbestandteil der Welt und kann nicht weiter analysiert werden. Es gibt einen Unterschied zwischen einem Geschehen, das sich ohne jede Ursache einfach bloß ereignet, und einer Tat, die ohne jede Ursache einfach getan wird. Diesen Unterschied verstehen wir alle, wenn wir ihn auch nicht erklären können."
+
+Auch hier bleibt die Frage: Wenn ich nicht festlege, welche der beiden Möglichkeiten sich verwirklicht, bin ich dafür ebenso wenig verantwortlich, wie wenn sie von äußeren Ursachen vorherbestimmt wäre. Wie kann ich etwas festlegen, das durch nichts festgelegt ist?
+
+> „Wenn der Determinismus wahr ist, dann sind die vorangegangenen Umstände verantwortlich. Wenn der Determinismus falsch ist, so ist nichts verantwortlich."
+
+→ Eine echte Sackgasse: Ob Determinismus wahr oder falsch ist – Verantwortung scheint in beiden Fällen zu verschwinden.
+
+### Eine weitere Position (kompatibilistischer Ansatz)
+
+Manche meinen, unsere Verantwortlichkeit setze gerade voraus, dass unsere Handlungen determiniert sind. Als man die Torte wählte, war das etwas, das man _tat_ – nicht etwas, das einfach _geschah_ –, weil man sie sich mehr wünschte als den Pfirsich. Der Determinismus wäre demnach keine Bedrohung der Freiheit: Hätte einen jemand zur Torte gezwungen, wäre es keine freie Entscheidung gewesen. Freies Handeln verlangt nicht die Abwesenheit jeder Ursache, sondern nur, dass die Ursache von der „gewohnten psychischen Art" ist (Wünsche, Überzeugungen, Charakter).
+
+**Problem dieser Lösung:** Wenn alles, was man tut, vollständig durch die eigene psychische Verfassung determiniert ist, sitzt man in derselben Falle – man wäre letztlich eine Marionette, und es wäre sinnlos, jemanden zur Verantwortung zu ziehen.
+
+### Offene Frage
+
+Um dieser Konsequenz zu entgehen, müsste man zweierlei klären:  
+**(A)** Was genau meint man damit, dass man auch anders hätte handeln können, als man tatsächlich gehandelt hat?  
+**(B)** Wie müssten man selbst und die Welt beschaffen sein, damit das wahr sein kann?
+
+Nagel lässt das Problem letztlich offen – als eine der hartnäckigsten Fragen der Philosophie.
+### Quellen
+- Thomas Nagel, *Was bedeutet das alles?*, Kap. 6 → Was bedeutet das alles
+
+### Verbindungen
+- → Essays
+- ⇄ [Der Paragraphen-Automat und die Maxime](/essays/der-paragraphen-automat-und-die-maxime/)
+- → Ermessen / Verhältnismäßigkeit → BaAV-04
