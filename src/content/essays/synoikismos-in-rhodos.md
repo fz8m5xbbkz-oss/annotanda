@@ -2,6 +2,8 @@
 title: "Synoikismos in Rhodos"
 date: 2026-06-20
 substack_url: "https://luisfzl.substack.com/p/synoikismos-in-rhodos"
+bild: "/bilder/kamiros.jpg"
+bild_untertitel: "Kamiros, Rhodos — eigene Aufnahme"
 ---
 
 Im Jahr 408 v. Chr. verschmolzen drei Städte zu einer — und verloren dabei etwas, das Aristoteles 70 Jahre später in Worte fassen würde. Doch der Zusammenschluss passierte ohne Krieg oder äußere Einflüsse. Es war das Aufgeben bestehender und funktionierender Ordnungen und ein Zusammenschmelzen von Gemeinwesen, wofür die Griechen das Wort Synoikismos verwenden. Ein radikaler Verwaltungsakt, der eine enorme Bedeutung in die Geschichte von Rhodos hatte. Doch wann ist es klug, eine funktionierende Ordnung zu zerstören, um eine neue zu bauen?
