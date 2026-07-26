@@ -32,8 +32,13 @@ const formatDatum = (datum: Date) =>
             <span class="auszug">{auszug(r.body, 150)}</span>
           </a>
           {r.data.substack_url && (
-            <a class="substack-link" href={r.data.substack_url} target="_blank" rel="noopener noreferrer">
+            <a class="woanders-link" href={r.data.substack_url} target="_blank" rel="noopener noreferrer">
               auch auf Substack ↗
+            </a>
+          )}
+          {r.data.steady_url && (
+            <a class="woanders-link" href={r.data.steady_url} target="_blank" rel="noopener noreferrer">
+              auch auf Steady ↗
             </a>
           )}
         </li>
@@ -132,10 +137,11 @@ const formatDatum = (datum: Date) =>
     line-height: 1.5;
   }
 
-  /* Substack-Hinweis: kleiner, dezent, eigenständiger Link */
-  .substack-link {
+  /* Cross-Post-Hinweise (Substack · Steady): klein, dezent, nebeneinander */
+  .woanders-link {
     display: inline-block;
     margin-top: 0.2rem;
+    margin-right: 1rem;
     font-family: var(--schrift-ui);
     font-size: 0.8rem;
     color: var(--grau);
@@ -143,7 +149,7 @@ const formatDatum = (datum: Date) =>
     transition: color 0.15s ease;
   }
 
-  .substack-link:hover {
+  .woanders-link:hover {
     color: var(--akzent);
   }
 </style>

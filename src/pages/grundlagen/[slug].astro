@@ -40,11 +40,15 @@ const lesezeit = Math.max(1, Math.round(woerter / 200));
     </header>
     <Content />
     <p class="schluss" aria-hidden="true">⁂</p>
-    {eintrag.data.substack_url && (
-      <p class="substack">
-        <a href={eintrag.data.substack_url} target="_blank" rel="noopener noreferrer">
-          auch auf Substack ↗
-        </a>
+    {(eintrag.data.substack_url || eintrag.data.steady_url) && (
+      <p class="woanders">
+        {eintrag.data.substack_url && (
+          <a href={eintrag.data.substack_url} target="_blank" rel="noopener noreferrer">auch auf Substack ↗</a>
+        )}
+        {eintrag.data.substack_url && eintrag.data.steady_url && <span aria-hidden="true"> · </span>}
+        {eintrag.data.steady_url && (
+          <a href={eintrag.data.steady_url} target="_blank" rel="noopener noreferrer">auch auf Steady ↗</a>
+        )}
       </p>
     )}
   </article>
@@ -120,14 +124,14 @@ const lesezeit = Math.max(1, Math.round(woerter / 200));
   }
 
   /* Substack-Hinweis unter dem Asterismus — dieselbe Sprache wie in der Liste. */
-  .substack {
+  .woanders {
     text-align: center;
     margin: 1.25rem 0 0;
     font-family: var(--schrift-ui);
     font-size: 0.85rem;
   }
 
-  .substack a {
+  .woanders a {
     color: var(--grau);
     text-decoration: none;
     border-bottom: 1px solid var(--linie);
@@ -135,7 +139,7 @@ const lesezeit = Math.max(1, Math.round(woerter / 200));
     transition: color 0.15s ease, border-color 0.15s ease;
   }
 
-  .substack a:hover {
+  .woanders a:hover {
     color: var(--akzent);
     border-color: var(--akzent);
   }

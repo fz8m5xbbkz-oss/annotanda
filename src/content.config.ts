@@ -11,6 +11,7 @@ const essays = defineCollection({
     themengebiet: z.string().optional(),
     unterthema: z.string().optional(),
     substack_url: z.string().url().optional(),
+    steady_url: z.string().url().optional(),
     // Optionales getöntes Kopfbild (Pfad in public/, z. B. /bilder/kamiros.jpg)
     // plus Bildunterschrift. Bewusste Ausnahme von der bildlosen Optik.
     bild: z.string().optional(),
@@ -29,6 +30,7 @@ const buecher = defineCollection({
     date: z.coerce.date(),
     buch: z.string().optional(),
     substack_url: z.string().url().optional(),
+    steady_url: z.string().url().optional(),
   }),
 });
 
@@ -41,6 +43,7 @@ const grundlagen = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     substack_url: z.string().url().optional(),
+    steady_url: z.string().url().optional(),
   }),
 });
 

@@ -106,23 +106,24 @@ function bereinige(body, slugMap = null) {
 }
 
 /**
- * Trägt `substack_url` in die Frontmatter einer Obsidian-Notiz ein
- * (Essay oder Resümee — daher der Vault-Ordner als Parameter).
- * Die Notiz bleibt die Quelle der Wahrheit — stünde der Link nur im Repo,
- * wäre er beim nächsten Lauf wieder überschrieben. Ein vorhandener (auch
- * leerer) Schlüssel wird ersetzt, sonst wird die Zeile vor dem schließenden
- * `---` eingefügt. Ohne Frontmatter passiert nichts — dann fehlte auch
- * `status: fertig`, der Essay wäre gar nicht so weit gekommen.
+ * Trägt einen Frontmatter-Wert (z. B. `substack_url`, `steady_url`) in eine
+ * Obsidian-Notiz ein (Essay/Resümee/Grundlagen — daher der Vault-Ordner als
+ * Parameter). Die Notiz bleibt die Quelle der Wahrheit — stünde der Link nur
+ * im Repo, wäre er beim nächsten Lauf wieder überschrieben. Ein vorhandener
+ * (auch leerer) Schlüssel wird ersetzt, sonst wird die Zeile vor dem
+ * schließenden `---` eingefügt. Ohne Frontmatter passiert nichts — dann fehlte
+ * auch `status: fertig`, der Essay wäre gar nicht so weit gekommen.
  */
-function setzeSubstackImVault(vault, datei, url) {
+function setzeFrontmatterWert(vault, datei, schluessel, wert) {
   const pfad = join(vault, datei);
   const roh = readFileSync(pfad, 'utf-8');
   const block = roh.match(/^---\r?\n[\s\S]*?\r?\n---/)?.[0];
   if (!block) return false;
 
-  const zeile = `substack_url: "${url}"`;
-  const neuerBlock = /^substack_url:.*$/m.test(block)
-    ? block.replace(/^substack_url:.*$/m, zeile)
+  const zeile = `${schluessel}: "${wert}"`;
+  const re = new RegExp(`^${schluessel}:.*$`, 'm');
+  const neuerBlock = re.test(block)
+    ? block.replace(re, zeile)
     : block.replace(/(\r?\n)---$/, `$1${zeile}$1---`);
 
   writeFileSync(pfad, neuerBlock + roh.slice(block.length), 'utf-8');
@@ -467,12 +468,13 @@ if (existsSync(ESSAY_VAULT)) {
 
     // Als Funktion, damit der Substack-Schritt weiter unten denselben Essay
     // mit ergänztem Link noch einmal bauen kann.
-    const baueInhalt = (substackUrl) => {
+    const baueInhalt = ({ substack, steady } = {}) => {
       const frontmatter = [
         '---',
         `title: "${titel.replace(/"/g, '\\"')}"`,
         `date: ${datum}`,
-        ...(substackUrl ? [`substack_url: "${substackUrl}"`] : []),
+        ...(substack ? [`substack_url: "${substack}"`] : []),
+        ...(steady ? [`steady_url: "${steady}"`] : []),
         ...(daten.bild ? [`bild: "${daten.bild}"`] : []),
         ...(daten.bild_untertitel
           ? [`bild_untertitel: "${daten.bild_untertitel.replace(/"/g, '\\"')}"`]
@@ -493,10 +495,11 @@ if (existsSync(ESSAY_VAULT)) {
       ziel,
       url,
       substackUrl: daten.substack_url || null,
+      steadyUrl: daten.steady_url || null,
       baueInhalt,
     });
 
-    const inhalt = baueInhalt(daten.substack_url);
+    const inhalt = baueInhalt({ substack: daten.substack_url, steady: daten.steady_url });
     if (existsSync(ziel) && readFileSync(ziel, 'utf-8') === inhalt) continue;
     kandidaten.push({
       art: existsSync(ziel) ? 'aktualisiert' : 'neu',
@@ -534,13 +537,14 @@ if (existsSync(RESUEMEE_VAULT)) {
       continue;
     }
 
-    const baueInhalt = (substackUrl) => {
+    const baueInhalt = ({ substack, steady } = {}) => {
       const frontmatter = [
         '---',
         `title: "${titel.replace(/"/g, '\\"')}"`,
         `date: ${datum}`,
         ...(buch ? [`buch: "${buch.replace(/"/g, '\\"')}"`] : []),
-        ...(substackUrl ? [`substack_url: "${substackUrl}"`] : []),
+        ...(substack ? [`substack_url: "${substack}"`] : []),
+        ...(steady ? [`steady_url: "${steady}"`] : []),
         '---',
       ].join('\n');
       return `${frontmatter}\n\n${text}\n`;
@@ -557,10 +561,11 @@ if (existsSync(RESUEMEE_VAULT)) {
       ziel,
       url,
       substackUrl: daten.substack_url || null,
+      steadyUrl: daten.steady_url || null,
       baueInhalt,
     });
 
-    const inhalt = baueInhalt(daten.substack_url);
+    const inhalt = baueInhalt({ substack: daten.substack_url, steady: daten.steady_url });
     if (existsSync(ziel) && readFileSync(ziel, 'utf-8') === inhalt) continue;
     kandidaten.push({
       art: existsSync(ziel) ? 'aktualisiert' : 'neu',
@@ -597,12 +602,13 @@ if (existsSync(GRUNDLAGEN_VAULT)) {
       continue;
     }
 
-    const baueInhalt = (substackUrl) => {
+    const baueInhalt = ({ substack, steady } = {}) => {
       const frontmatter = [
         '---',
         `title: "${titel.replace(/"/g, '\\"')}"`,
         `date: ${datum}`,
-        ...(substackUrl ? [`substack_url: "${substackUrl}"`] : []),
+        ...(substack ? [`substack_url: "${substack}"`] : []),
+        ...(steady ? [`steady_url: "${steady}"`] : []),
         '---',
       ].join('\n');
       return `${frontmatter}\n\n${text}\n`;
@@ -619,10 +625,11 @@ if (existsSync(GRUNDLAGEN_VAULT)) {
       ziel,
       url,
       substackUrl: daten.substack_url || null,
+      steadyUrl: daten.steady_url || null,
       baueInhalt,
     });
 
-    const inhalt = baueInhalt(daten.substack_url);
+    const inhalt = baueInhalt({ substack: daten.substack_url, steady: daten.steady_url });
     if (existsSync(ziel) && readFileSync(ziel, 'utf-8') === inhalt) continue;
     kandidaten.push({
       art: existsSync(ziel) ? 'aktualisiert' : 'neu',
@@ -713,15 +720,15 @@ if (offeneWerkstatt.length > 0) {
 
 // ── Nichts zu tun? ──────────────────────────────────────────────────────────
 
-// Fertige Texte (Essays + Resümees), bei denen der Substack-Link noch fehlt.
-// Bewusst ALLE, nicht nur die geänderten: der Normalfall ist „letzten Sonntag
-// veröffentlicht, jetzt drüben online" — da hat sich am Text nichts getan, nur
-// der Link kommt dazu.
-const ohneSubstack = [...fertigeEssays, ...fertigeResuemees, ...fertigeGrundlagen].filter(
-  (e) => !e.substackUrl
+// Fertige Texte (Essays/Resümees/Grundlagen), bei denen ein Cross-Post-Link
+// (Substack oder Steady) noch fehlt. Bewusst ALLE, nicht nur die geänderten:
+// der Normalfall ist „am Sonntag veröffentlicht, jetzt drüben online" — da hat
+// sich am Text nichts getan, nur der Link kommt dazu.
+const ohneLink = [...fertigeEssays, ...fertigeResuemees, ...fertigeGrundlagen].filter(
+  (e) => !e.substackUrl || !e.steadyUrl
 );
 
-if (kandidaten.length === 0 && ohneSubstack.length === 0) {
+if (kandidaten.length === 0 && ohneLink.length === 0) {
   console.log('\nNichts zu veröffentlichen — keine fertigen, geänderten Essays');
   console.log('und keine geänderten Seiten im Vault.\n');
   process.exit(0);
@@ -757,31 +764,49 @@ const frage = (text) => {
   return new Promise((resolve) => wartende.push(resolve));
 };
 
-// ── Substack-Links eintragen ────────────────────────────────────────────────
+// ── Cross-Post-Links eintragen (Substack · Steady) ──────────────────────────
 // Der Link geht zuerst in die Obsidian-Notiz (Quelle der Wahrheit), dann in die
-// Veröffentlichung — so muss publizieren nicht zweimal laufen.
+// Veröffentlichung — so muss publizieren nicht zweimal laufen. Pro Text wird
+// nur nach den Plattformen gefragt, deren Link noch fehlt.
 
 let vaultGeaendert = false;
+const istUrl = (s) => /^https?:\/\/\S+$/i.test(s);
 
-if (ohneSubstack.length > 0) {
-  console.log('\n── Substack ─────────────────────────────────────────────\n');
-  for (const e of ohneSubstack) console.log(`  ○ ohne Link   ${e.titel}`);
+if (ohneLink.length > 0) {
+  console.log('\n── Cross-Posts (Substack · Steady) ──────────────────────\n');
+  for (const e of ohneLink) {
+    const fehlt = [!e.substackUrl && 'Substack', !e.steadyUrl && 'Steady']
+      .filter(Boolean)
+      .join(' + ');
+    console.log(`  ○ ohne ${fehlt}   ${e.titel}`);
+  }
 
   const jetzt = await frage(`\nLinks jetzt eintragen? [j/N] `);
 
   if (jetzt.trim().toLowerCase() === 'j') {
-    for (const e of ohneSubstack) {
-      const eingabe = (await frage(`\n  „${e.titel}"\n  URL (Enter = überspringen): `)).trim();
-      if (!eingabe) continue;
-      if (!/^https?:\/\/\S+$/i.test(eingabe)) {
-        console.log('  ⚠ Sieht nicht nach einer URL aus — übersprungen.');
-        continue;
-      }
+    for (const e of ohneLink) {
+      let geaendert = false;
 
-      e.substackUrl = eingabe;
-      if (setzeSubstackImVault(e.vault, e.datei, eingabe)) vaultGeaendert = true;
+      // Nur fragen, wo der Link fehlt; leere Eingabe überspringt.
+      const abfrage = async (label, schluessel, feld) => {
+        if (e[feld]) return;
+        const eingabe = (await frage(`\n  „${e.titel}" — ${label}-URL (Enter = überspringen): `)).trim();
+        if (!eingabe) return;
+        if (!istUrl(eingabe)) {
+          console.log('  ⚠ Sieht nicht nach einer URL aus — übersprungen.');
+          return;
+        }
+        e[feld] = eingabe;
+        if (setzeFrontmatterWert(e.vault, e.datei, schluessel, eingabe)) vaultGeaendert = true;
+        geaendert = true;
+      };
 
-      const inhalt = e.baueInhalt(eingabe);
+      await abfrage('Substack', 'substack_url', 'substackUrl');
+      await abfrage('Steady', 'steady_url', 'steadyUrl');
+
+      if (!geaendert) continue;
+
+      const inhalt = e.baueInhalt({ substack: e.substackUrl, steady: e.steadyUrl });
       const schonKandidat = kandidaten.find((k) => k.ziel === e.ziel);
       if (schonKandidat) {
         schonKandidat.inhalt = inhalt;
