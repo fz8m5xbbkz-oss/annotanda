@@ -28,6 +28,7 @@ import { readdirSync, readFileSync, writeFileSync, existsSync, mkdirSync } from 
 import { join, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
+import { generiereKarten } from './karten.mjs';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 
@@ -473,6 +474,7 @@ if (existsSync(ESSAY_VAULT)) {
         '---',
         `title: "${titel.replace(/"/g, '\\"')}"`,
         `date: ${datum}`,
+        ...(daten.teaser ? [`teaser: "${daten.teaser.replace(/"/g, '\\"')}"`] : []),
         ...(substack ? [`substack_url: "${substack}"`] : []),
         ...(steady ? [`steady_url: "${steady}"`] : []),
         ...(daten.bild ? [`bild: "${daten.bild}"`] : []),
@@ -543,6 +545,7 @@ if (existsSync(RESUEMEE_VAULT)) {
         `title: "${titel.replace(/"/g, '\\"')}"`,
         `date: ${datum}`,
         ...(buch ? [`buch: "${buch.replace(/"/g, '\\"')}"`] : []),
+        ...(daten.teaser ? [`teaser: "${daten.teaser.replace(/"/g, '\\"')}"`] : []),
         ...(substack ? [`substack_url: "${substack}"`] : []),
         ...(steady ? [`steady_url: "${steady}"`] : []),
         '---',
@@ -607,6 +610,7 @@ if (existsSync(GRUNDLAGEN_VAULT)) {
         '---',
         `title: "${titel.replace(/"/g, '\\"')}"`,
         `date: ${datum}`,
+        ...(daten.teaser ? [`teaser: "${daten.teaser.replace(/"/g, '\\"')}"`] : []),
         ...(substack ? [`substack_url: "${substack}"`] : []),
         ...(steady ? [`steady_url: "${steady}"`] : []),
         '---',
@@ -857,6 +861,13 @@ for (const k of kandidaten) {
   writeFileSync(k.ziel, k.inhalt, 'utf-8');
 }
 
+// Social-Cards: erst jetzt, damit sie den gerade geschriebenen Titel lesen.
+// Geänderte Essays werden neu gezeichnet (Titel/Datum stehen auf der Karte).
+const geaenderteEssays = kandidaten
+  .filter((k) => dirname(k.ziel) === ESSAY_ORDNER)
+  .map((k) => basename(k.ziel, '.md'));
+const karten = generiereKarten({ neuZeichnen: geaenderteEssays });
+
 const essays = kandidaten.filter((k) => !k.seite).map((k) => k.label);
 const seiten = kandidaten.filter((k) => k.seite).map((k) => k.name);
 const teile = [];
@@ -864,7 +875,7 @@ if (essays.length) teile.push(`essay: ${essays.join(', ')}`);
 if (seiten.length) teile.push(`seiten: ${seiten.join(', ')}`);
 const nachricht = teile.join(' · ');
 
-execFileSync('git', ['add', ...kandidaten.map((k) => k.ziel)], { cwd: __dir });
+execFileSync('git', ['add', ...kandidaten.map((k) => k.ziel), ...karten], { cwd: __dir });
 execFileSync('git', ['commit', '-m', nachricht], { cwd: __dir, stdio: 'inherit' });
 
 console.log('\n── Veröffentlicht ─────────────────────────────────────');

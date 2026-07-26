@@ -10,6 +10,9 @@ const essays = defineCollection({
     feld: z.string().default('philosophie-ethik'),
     themengebiet: z.string().optional(),
     unterthema: z.string().optional(),
+    // Meta-Description und Social-Card-Untertitel. Fehlt sie, wird der
+    // Textanfang genommen (siehe lib/text.ts → beschreibung).
+    teaser: z.string().optional(),
     substack_url: z.string().url().optional(),
     steady_url: z.string().url().optional(),
     // Optionales getöntes Kopfbild (Pfad in public/, z. B. /bilder/kamiros.jpg)
@@ -29,6 +32,7 @@ const buecher = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     buch: z.string().optional(),
+    teaser: z.string().optional(),
     substack_url: z.string().url().optional(),
     steady_url: z.string().url().optional(),
   }),
@@ -42,6 +46,7 @@ const grundlagen = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
+    teaser: z.string().optional(),
     substack_url: z.string().url().optional(),
     steady_url: z.string().url().optional(),
   }),

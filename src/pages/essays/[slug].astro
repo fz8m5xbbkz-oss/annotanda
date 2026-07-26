@@ -1,16 +1,25 @@
 ---
 import Basis from '../../layouts/Basis.astro';
 import { getCollection, render, getEntry } from 'astro:content';
+import { existsSync } from 'node:fs';
+import { beschreibung } from '../../lib/text.ts';
+import { anker, quellenZuEssay } from '../../lib/quellen.ts';
 
 export async function getStaticPaths() {
   const essays = await getCollection('essays');
-  return essays.map((essay) => ({
+  // Chronologisch, damit jeder Essay seine Nachbarn kennt: frueher = älter.
+  const sortiert = essays.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+  return sortiert.map((essay, i) => ({
     params: { slug: essay.id },
-    props: { essay },
+    props: {
+      essay,
+      frueher: sortiert[i - 1] ?? null,
+      spaeter: sortiert[i + 1] ?? null,
+    },
   }));
 }
 
-const { essay } = Astro.props;
+const { essay, frueher, spaeter } = Astro.props;
 const { Content } = await render(essay);
 
 const datum = essay.data.date.toLocaleDateString('de-DE', {
@@ -25,9 +34,25 @@ const feld = feldEntry ? { name: feldEntry.data.title } : null;
 // 200 Wörter/Minute, aufgerundet, mindestens 1
 const woerter = (essay.body ?? '').split(/\s+/).filter(Boolean).length;
 const lesezeit = Math.max(1, Math.round(woerter / 200));
+
+const teaser = essay.data.teaser ?? beschreibung(essay.body);
+
+// Eigene Social-Card, falls `npm run karten` sie schon gezeichnet hat —
+// sonst nimmt Basis.astro die allgemeine.
+const belege = quellenZuEssay(essay.id);
+
+const kartenPfad = `/og/${essay.id}.png`;
+const karte = existsSync(new URL(`../../../public${kartenPfad}`, import.meta.url))
+  ? kartenPfad
+  : undefined;
 ---
 
-<Basis titel={`${essay.data.title} — annotanda`} leserModus={true}>
+<Basis
+  titel={`${essay.data.title} — annotanda`}
+  beschreibung={teaser}
+  karte={karte}
+  leserModus={true}
+>
   <div class="fortschritt" aria-hidden="true"></div>
   <article>
     <a href="/essays/" class="zurueck">← Essays</a>
@@ -53,6 +78,21 @@ const lesezeit = Math.max(1, Math.round(woerter / 200));
     </header>
     <Content />
     <p class="schluss" aria-hidden="true">⁂</p>
+    {belege.length > 0 && (
+      <section class="belege">
+        <h2>Quellen</h2>
+        <ul>
+          {belege.map((q) => (
+            <li>
+              <a href={`/quellen/#${anker(q)}`}>
+                {q.autor && <span class="b-autor">{q.autor}: </span>}<em>{q.titel}</em>{q.jahr && <span class="b-jahr">, {q.jahr}</span>}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a class="b-alle" href="/quellen/">Ganzes Quellenverzeichnis →</a>
+      </section>
+    )}
     {(essay.data.substack_url || essay.data.steady_url) && (
       <p class="woanders">
         {essay.data.substack_url && (
@@ -65,6 +105,22 @@ const lesezeit = Math.max(1, Math.round(woerter / 200));
       </p>
     )}
   </article>
+  {(frueher || spaeter) && (
+    <nav class="nachbarn" aria-label="Weitere Essays">
+      {frueher ? (
+        <a class="nachbar frueher" href={`/essays/${frueher.id}/`}>
+          <span class="n-label">← Vorher</span>
+          <span class="n-titel">{frueher.data.title}</span>
+        </a>
+      ) : <span class="nachbar leer"></span>}
+      {spaeter ? (
+        <a class="nachbar spaeter" href={`/essays/${spaeter.id}/`}>
+          <span class="n-label">Danach →</span>
+          <span class="n-titel">{spaeter.data.title}</span>
+        </a>
+      ) : <span class="nachbar leer"></span>}
+    </nav>
+  )}
   {essay.data.bild && (
     <svg class="duotone-defs" width="0" height="0" aria-hidden="true" focusable="false">
       <defs>
@@ -207,6 +263,67 @@ const lesezeit = Math.max(1, Math.round(woerter / 200));
     user-select: none;
   }
 
+  /* Quellenapparat: kleiner als der Lesetext, damit er ihn nicht überstimmt.
+     Bewusst hier unten und nicht als Inline-Link im Zitat — der Lesetext
+     bleibt ruhig. */
+  .belege {
+    margin: 2.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--linie);
+  }
+
+  .belege h2 {
+    font-family: var(--schrift-ui);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--grau);
+    margin: 0 0 0.75rem;
+  }
+
+  .belege ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .belege li {
+    margin-bottom: 0.4rem;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .belege li a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .belege li a:hover {
+    color: var(--akzent);
+    border-color: var(--linie);
+  }
+
+  .b-autor {
+    font-weight: 600;
+  }
+
+  .b-alle {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-family: var(--schrift-ui);
+    font-size: 0.8rem;
+    color: var(--grau);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .b-alle:hover {
+    color: var(--akzent);
+  }
+
   /* Substack-Hinweis unter dem Asterismus — dieselbe Sprache wie in der
      Essay-Liste, nur zentriert unter dem Schlusszeichen. */
   .woanders {
@@ -227,6 +344,78 @@ const lesezeit = Math.max(1, Math.round(woerter / 200));
   .woanders a:hover {
     color: var(--akzent);
     border-color: var(--akzent);
+  }
+
+  /* Vor/Zurück: zwei Spalten, außerhalb des Artikels — im Reader Mode auf dem
+     Handy der einzige Weg weiter, weil Header und Footer dort ausgeblendet sind. */
+  .nachbarn {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--linie);
+  }
+
+  .nachbar {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.35s var(--feder);
+  }
+
+  .nachbar.spaeter {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .frueher:hover {
+    transform: translateX(-5px);
+  }
+
+  .spaeter:hover {
+    transform: translateX(5px);
+  }
+
+  .n-label {
+    font-family: var(--schrift-ui);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--grau);
+  }
+
+  .n-titel {
+    line-height: 1.35;
+    transition: color 0.15s ease;
+  }
+
+  .nachbar:hover .n-titel {
+    color: var(--akzent);
+  }
+
+  @media (max-width: 640px) {
+    .nachbarn {
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .nachbar.spaeter {
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    .nachbar.leer {
+      display: none;
+    }
+
+    .frueher:hover,
+    .spaeter:hover {
+      transform: none;
+    }
   }
 
   .fortschritt {

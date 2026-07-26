@@ -3,6 +3,7 @@ import Basis from '../layouts/Basis.astro';
 import Vignette from '../components/Vignette.astro';
 import { getCollection } from 'astro:content';
 import { quellen, typReihenfolge, typLabel } from '../data/quellen.js';
+import { anker, mitPunkt } from '../lib/quellen.ts';
 
 // Quellen nach Typ gruppieren, in definierter Reihenfolge
 const gruppen = typReihenfolge
@@ -41,14 +42,14 @@ const essayTitel = new Map(essays.map((e) => [e.id, e.data.title]));
       <h2 data-reveal>{label}</h2>
       <ol>
         {eintraege.map((q, i) => (
-          <li data-reveal style={`--reveal-delay: ${Math.min(i, 6) * 70}ms`}>
+          <li id={anker(q)} data-reveal style={`--reveal-delay: ${Math.min(i, 6) * 70}ms`}>
             <span class="autor">{q.autor ? `${q.autor}: ` : ''}</span>{q.url
               ? <a href={q.url} target="_blank" rel="noopener noreferrer"><em>{q.titel}</em></a>
               : <em>{q.titel}</em>
-            }{q.untertitel && <span class="untertitel">. {q.untertitel}</span>}{q.jahr && <span class="meta">, {q.jahr}</span>}{q.verlag && <span class="meta">. {q.verlag}</span>}{q.notiz && <span class="notiz"> — {q.notiz}</span>}
+            }{q.untertitel && <span class="untertitel">. {q.untertitel}</span>}{q.jahr && <span class="meta">, {q.jahr}</span>}{q.verlag && <span class="meta">. {q.verlag}</span>}{q.notiz && <span class="notiz"> — {mitPunkt(q.notiz)}</span>}
             {q.essays && q.essays.some((s) => essayTitel.has(s)) && (
               <span class="erwaehnt">
-                erwähnt in {q.essays.filter((s) => essayTitel.has(s)).map((s, i, arr) => (
+                Erwähnt in {q.essays.filter((s) => essayTitel.has(s)).map((s, i, arr) => (
                   <>
                     <a href={`/essays/${s}/`}>{essayTitel.get(s)}</a>{i < arr.length - 1 ? ', ' : ''}
                   </>
@@ -77,6 +78,14 @@ const essayTitel = new Map(essays.map((e) => [e.id, e.data.title]));
   li {
     margin-bottom: 0.75rem;
     line-height: 1.5;
+    scroll-margin-top: 2rem;
+  }
+
+  /* Wer aus einem Essay hierher springt, soll die Stelle sofort finden */
+  li:target {
+    border-left: 2px solid var(--akzent);
+    margin-left: -1rem;
+    padding-left: calc(1rem - 2px);
   }
 
   .autor {

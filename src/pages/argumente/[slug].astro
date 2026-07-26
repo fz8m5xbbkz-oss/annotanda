@@ -1,6 +1,7 @@
 ---
 import Basis from '../../layouts/Basis.astro';
 import { argumente } from '../../data/argumente.js';
+import { zerlegeDiagramm, textVon } from '../../lib/argument.ts';
 
 export function getStaticPaths() {
   return argumente.map((a) => ({ params: { slug: a.slug } }));
@@ -8,6 +9,21 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const eintrag = argumente.find((a) => a.slug === slug);
+
+// Textfassung des Diagramms — steht immer im HTML, damit die Argumentation
+// auch ohne JavaScript und für Crawler und Screenreader lesbar ist.
+const knoten = zerlegeDiagramm(eintrag.diagramm);
+const nummer = new Map(knoten.map((k, i) => [k.id, i + 1]));
+
+// Kurzform für Querverweise: der Teil vor dem ersten Doppelpunkt/Gedankenstrich
+// („Nagel, Torte vs. Pfirsich: War die Wahl je offen …" → „Nagel, Torte vs. Pfirsich")
+const kurz = (id: string) => {
+  const text = textVon(knoten, id).split(/[:—]/)[0].trim();
+  return text.length > 48 ? text.slice(0, 48).replace(/\s+\S*$/, '') + ' …' : text;
+};
+
+const verweis = (ids: string[]) =>
+  ids.map((id) => `Nr. ${nummer.get(id)} — ${kurz(id)}`).join('; ');
 ---
 
 <Basis
@@ -22,6 +38,26 @@ const eintrag = argumente.find((a) => a.slug === slug);
   <div class="diagramm-wrapper">
     <pre class="mermaid">{eintrag.diagramm.trim()}</pre>
   </div>
+
+  <!-- Textfassung: ohne JavaScript aufgeklappt und die einzige Darstellung,
+       mit gezeichnetem Diagramm zugeklappt. Immer im HTML — das ist der Teil,
+       den Crawler und Screenreader lesen. -->
+  <details class="struktur" open>
+    <summary>Argumentation als Text</summary>
+    <ol>
+      {knoten.map((k) => (
+        <li>
+          <span class="k-text">{k.text}</span>
+          {k.stuetzt.length > 0 && (
+            <span class="k-kante">stützt {verweis(k.stuetzt)}</span>
+          )}
+          {k.einwand.length > 0 && (
+            <span class="k-kante einwand">Einwand: {verweis(k.einwand)}</span>
+          )}
+        </li>
+      ))}
+    </ol>
+  </details>
 
   <p class="essay-link">
     <a href={`/essays/${eintrag.slug}/`}>Essay lesen →</a>
@@ -63,7 +99,18 @@ const eintrag = argumente.find((a) => a.slug === slug);
       n.innerHTML = n.dataset.quelle;
     });
 
-    mermaid.run({ nodes: Array.from(knoten) });
+    // Erst nach erfolgreichem Zeichnen wird das Diagramm sichtbar und die
+    // Textfassung zugeklappt. Scheitert Mermaid (CDN blockiert, Syntaxfehler),
+    // bleibt der Quelltext verborgen und die Textfassung offen — dann steht
+    // dort immer noch die vollständige Argumentation.
+    mermaid.run({ nodes: Array.from(knoten) }).then(() => {
+      document.querySelectorAll('.diagramm-wrapper').forEach((w) => {
+        w.classList.add('gezeichnet');
+      });
+      document.querySelectorAll('details.struktur').forEach((d) => {
+        d.open = false;
+      });
+    });
   }
 
   // Erstes Laden direkt ...
@@ -95,7 +142,15 @@ const eintrag = argumente.find((a) => a.slug === slug);
     margin-top: -0.5rem;
   }
 
+  /* Vor dem Zeichnen weggeklappt statt display:none — Mermaid muss die
+     Textbreiten messen können, das geht nur bei vorhandenem Layout. */
   .diagramm-wrapper {
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .diagramm-wrapper.gezeichnet {
+    max-height: none;
     margin: 2rem 0;
     overflow-x: auto;
   }
@@ -103,6 +158,48 @@ const eintrag = argumente.find((a) => a.slug === slug);
   .mermaid {
     background: transparent;
     font-family: var(--schrift-ui);
+  }
+
+  /* Textfassung des Diagramms */
+  .struktur {
+    margin: 2rem 0;
+  }
+
+  .struktur summary {
+    font-family: var(--schrift-ui);
+    font-size: 0.85rem;
+    color: var(--grau);
+    cursor: pointer;
+  }
+
+  .struktur summary:hover {
+    color: var(--akzent);
+  }
+
+  .struktur ol {
+    margin: 1rem 0 0;
+    padding-left: 1.6rem;
+  }
+
+  .struktur li {
+    margin-bottom: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .k-text {
+    display: block;
+  }
+
+  .k-kante {
+    display: block;
+    font-family: var(--schrift-ui);
+    font-size: 0.78rem;
+    color: var(--grau);
+    margin-top: 0.15rem;
+  }
+
+  .k-kante.einwand {
+    font-style: italic;
   }
 
   .essay-link {

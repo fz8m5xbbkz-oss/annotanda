@@ -11,6 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "neu": "node neuer-essay.mjs",
+    "karten": "node karten.mjs",
     "publizieren": "node publizieren.mjs"
   },
   "dependencies": {

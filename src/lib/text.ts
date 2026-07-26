@@ -23,3 +23,18 @@ export function auszug(body: string | undefined, max = 180): string {
   if (text.length <= max) return text;
   return text.slice(0, max).replace(/\s+\S*$/, '') + ' …';
 }
+
+/**
+ * Meta-Description aus dem Fließtext: bevorzugt ganze Sätze, weil Google und
+ * Link-Vorschauen den Text ungekürzt anzeigen — ein abgeschnittener Satz liest
+ * sich dort schlechter als ein kurzer vollständiger.
+ */
+export function beschreibung(body: string | undefined, max = 158): string {
+  const text = auszug(body, 400).replace(/ …$/, '');
+  if (text.length <= max) return text;
+
+  const satzende = text.slice(0, max + 1).match(/^[\s\S]*[.!?»""](?=\s|$)/);
+  if (satzende && satzende[0].length >= 80) return satzende[0].trim();
+
+  return text.slice(0, max).replace(/\s+\S*$/, '') + ' …';
+}

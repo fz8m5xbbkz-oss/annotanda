@@ -10,10 +10,14 @@ import '../styles/global.css';
 const {
   titel = 'annotanda',
   beschreibung = 'Philosophie aus dem Inneren der Verwaltung. Ein wöchentliches Denktagebuch von Luis.',
+  karte = '/og/annotanda.png',
   leserModus = false,
 } = Astro.props;
 
 const kanonisch = new URL(Astro.url.pathname, Astro.site).toString();
+// Social-Cards liegen als fertige PNGs in public/og/ (siehe karten.mjs).
+// Absolute URL ist Pflicht — relative Pfade ignorieren die meisten Crawler.
+const karteAbsolut = new URL(karte, Astro.site).toString();
 ---
 
 <html lang="de">
@@ -44,11 +48,16 @@ const kanonisch = new URL(Astro.url.pathname, Astro.site).toString();
     <meta property="og:url" content={kanonisch} />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content="annotanda" />
+    <meta property="og:image" content={karteAbsolut} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${titel} — annotanda`} />
 
     <!-- Twitter / Bluesky-Vorschau -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={titel} />
     <meta name="twitter:description" content={beschreibung} />
+    <meta name="twitter:image" content={karteAbsolut} />
 
     <title>{titel}</title>
 

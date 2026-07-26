@@ -1,6 +1,7 @@
 ---
 import Basis from '../../layouts/Basis.astro';
 import { getCollection, render } from 'astro:content';
+import { beschreibung } from '../../lib/text.ts';
 
 export async function getStaticPaths() {
   const grundlagen = await getCollection('grundlagen');
@@ -24,7 +25,11 @@ const woerter = (eintrag.body ?? '').split(/\s+/).filter(Boolean).length;
 const lesezeit = Math.max(1, Math.round(woerter / 200));
 ---
 
-<Basis titel={`${eintrag.data.title} — annotanda`} leserModus={true}>
+<Basis
+  titel={`${eintrag.data.title} — annotanda`}
+  beschreibung={eintrag.data.teaser ?? beschreibung(eintrag.body)}
+  leserModus={true}
+>
   <div class="fortschritt" aria-hidden="true"></div>
   <article>
     <a href="/grundlagen/" class="zurueck">← Grundlagen</a>
