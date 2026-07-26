@@ -49,7 +49,9 @@ liest er sie automatisch und ist sofort auf Stand. Bitte vor jeder substantielle
 ```
 src/
 ├── pages/
-│   ├── index.astro              Startseite (Manifest + CTAs + Teaser neuester
+│   ├── index.astro              Startseite (Manifest + CTAs — „Newsletter
+│   │                             abonnieren" führt seit Juli 2026 zu Steady,
+│   │                             nicht mehr zu Substack + Teaser neuester
 │   │                             Essay + „Gerade auf dem Tisch" + Stöbern)
 │   ├── ueber.astro              Über-Seite (rendert inhalte/ueber.md + Sokrates)
 │   ├── lektuere.astro           Leseprotokoll (Gerade/Geplant/Abgeschlossen/
