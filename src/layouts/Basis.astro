@@ -5,6 +5,11 @@ import Randschmuck from '../components/Randschmuck.astro';
 import Streiflicht from '../components/Streiflicht.astro';
 import Hintergrund from '../components/Hintergrund.astro';
 import { ClientRouter } from 'astro:transitions';
+// Vercel Web Analytics (seit 27.07.2026): cookiefrei, keine IP-Speicherung,
+// keine Wiedererkennung über Aufrufe hinweg. Bewusste Abkehr von „gar kein
+// Zähler" — ohne Zahlen war nicht zu sagen, welcher Essay zieht. Muss im
+// Vercel-Projekt unter Analytics aktiviert sein, sonst läuft es ins Leere.
+import Analytics from '@vercel/analytics/astro';
 import '../styles/global.css';
 
 const {
@@ -78,6 +83,7 @@ const karteAbsolut = new URL(karte, Astro.site).toString();
       <slot />
     </main>
     <Footer />
+    <Analytics />
 
     <script>
       // ── Farbschema nach Seitenwechsel neu setzen ───────────────────────────

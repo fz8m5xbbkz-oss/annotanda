@@ -37,9 +37,16 @@ liest er sie automatisch und ist sofort auf Stand. Bitte vor jeder substantielle
 - **Markdown** als primäres Schreibformat
 - **GitHub** als Code-Hosting + Single Source of Truth
 - **Vercel** für Build und Hosting (Free-Plan; deployt automatisch bei jedem Push auf `main`)
-- **Keine Datenbank, kein CMS, keine Tracker, keine Cookie-Banner, kein
-  Newsletter-Popup**
-- **Eingebaute Integrationen:** `@astrojs/sitemap`, `@astrojs/rss`, `marked`
+- **Keine Datenbank, kein CMS, keine Cookie-Banner, kein Newsletter-Popup**
+- **Zähler seit 27.07.2026: Vercel Web Analytics** (`@vercel/analytics`, in
+  `Basis.astro` als `<Analytics />` am Ende von `<body>`). Cookiefrei, keine
+  IP-Speicherung, keine Wiedererkennung über Aufrufe hinweg — deshalb auch
+  kein Cookie-Banner nötig. Zählt auch die ClientRouter-Seitenwechsel
+  (verifiziert). **Muss im Vercel-Projekt unter Analytics aktiviert sein**,
+  sonst läuft das Skript ins Leere. Die frühere Regel „keine Analytics" gilt
+  nicht mehr; sie galt Trackern, nicht Zahlen.
+- **Eingebaute Integrationen:** `@astrojs/sitemap`, `@astrojs/rss`, `marked`,
+  `@vercel/analytics`
 - **Substack:** kein Feed-Mixing mehr (Juni 2026 entfernt) — Essays verlinken
   einzeln über `substack_url` im Frontmatter („auch auf Substack ↗")
 - **Auto-Push:** SSH-Key eingerichtet, post-commit-Hook pusht automatisch
@@ -94,8 +101,11 @@ src/
 ├── lib/
 │   ├── text.ts                  Lesezeit + Auszug + Meta-Description (geteilt)
 │   ├── quellen.ts               Anker-IDs + Quellen je Essay (Essay ↔ /quellen)
-│   └── argument.ts              Mermaid-Diagramm → Knoten/Kanten (Textfassung
-│                                 der Argument-Karten, ohne JS lesbar)
+│   ├── argument.ts              Mermaid-Diagramm → Knoten/Kanten (Textfassung
+│   │                             der Argument-Karten, ohne JS lesbar)
+│   └── rubriken.ts              Hat Grundlagen/Bücher schon einen Text?
+│                                 (steuert die Nav; per import.meta.glob statt
+│                                 getCollection — sonst warnt Astro pro Seite)
 └── styles/global.css            Tokens, Reset, Dark Mode, Reader-Mode-CSS
 
 public/

@@ -1,23 +1,16 @@
 ---
-import { getCollection } from 'astro:content';
-
-// Grundlagen und Bücher gehören erst mit ihrem ersten Text in die Nav: ein
-// Nav-Punkt auf eine leere Seite ist für den Leser eine Sackgasse und für
-// Google eine dünne Seite. Sobald der erste Text steht, erscheint der Punkt
-// von selbst — nichts von Hand nachzutragen.
-const [grundlagen, buecher] = await Promise.all([
-  getCollection('grundlagen'),
-  getCollection('buecher'),
-]);
+// Grundlagen und Bücher gehören erst mit ihrem ersten Text in die Nav —
+// Begründung und Verfahren in lib/rubriken.ts.
+import { hatGrundlagen, hatBuecher } from '../lib/rubriken.ts';
 
 // Trailing Slash: die Seite wird mit trailingSlash 'always' gebaut —
 // Links ohne Slash kosten sonst bei jedem Klick einen Redirect
 const links = [
   { href: '/essays/', text: 'Essays' },
-  ...(grundlagen.length ? [{ href: '/grundlagen/', text: 'Grundlagen' }] : []),
+  ...(hatGrundlagen ? [{ href: '/grundlagen/', text: 'Grundlagen' }] : []),
   { href: '/argumente/', text: 'Argumente' },
   { href: '/lektuere/', text: 'Lektüre' },
-  ...(buecher.length ? [{ href: '/buecher/', text: 'Bücher' }] : []),
+  ...(hatBuecher ? [{ href: '/buecher/', text: 'Bücher' }] : []),
   { href: '/quellen/', text: 'Quellen' },
   { href: '/ueber/', text: 'Über' },
 ];
