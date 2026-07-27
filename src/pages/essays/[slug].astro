@@ -104,6 +104,14 @@ const karte = existsSync(new URL(`../../../public${kartenPfad}`, import.meta.url
         )}
       </p>
     )}
+    <!-- Kein Kommentarbereich (bewusst) — aber der Leser soll antworten können.
+         Der Betreff trägt den Essay-Titel, damit die Zuordnung ohne Rückfrage
+         klappt. Die Adresse steht ohnehin schon offen auf /ueber/. -->
+    <p class="antwort">
+      <a href={`mailto:luisfrenzel@gmx.net?subject=${encodeURIComponent(`annotanda: ${essay.data.title}`)}`}>
+        Widerspruch, Hinweis, Fundstelle? Schreib mir →
+      </a>
+    </p>
   </article>
   {(frueher || spaeter) && (
     <nav class="nachbarn" aria-label="Weitere Essays">
@@ -342,6 +350,28 @@ const karte = existsSync(new URL(`../../../public${kartenPfad}`, import.meta.url
   }
 
   .woanders a:hover {
+    color: var(--akzent);
+    border-color: var(--akzent);
+  }
+
+  /* Antwort-Einladung: dieselbe stille Sprache wie die Cross-Post-Hinweise,
+     nur etwas tiefer gesetzt — sie schließt den Text ab, statt ihn zu stören. */
+  .antwort {
+    text-align: center;
+    margin: 2.5rem 0 0;
+    font-family: var(--schrift-ui);
+    font-size: 0.85rem;
+  }
+
+  .antwort a {
+    color: var(--grau);
+    text-decoration: none;
+    border-bottom: 1px solid var(--linie);
+    padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .antwort a:hover {
     color: var(--akzent);
     border-color: var(--akzent);
   }

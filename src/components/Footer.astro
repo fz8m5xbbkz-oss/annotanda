@@ -16,6 +16,10 @@ const sozial = [
     <span>© {jahr} Luis</span>
     <span aria-hidden="true">·</span>
     <a href="/ueber/">Kolophon</a>
+    <span aria-hidden="true">·</span>
+    <!-- Der Feed gab es schon, stand aber nur im <head> — sichtbar nur für
+         Reader-Software, nicht für den Leser. -->
+    <a href="/rss.xml">RSS</a>
   </div>
   <div class="rechts">
     {sozial.map(({ name, url }) => (
