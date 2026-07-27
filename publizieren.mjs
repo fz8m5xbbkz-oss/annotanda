@@ -90,6 +90,11 @@ const normKey = (s) => s.normalize('NFC').toLowerCase().trim();
  * Wichtig: %%-Blöcke fliegen ZUERST raus — Werkstatt-Wikilinks werden nie
  * zu Links, und die Mermaid-Extraktion passiert schon vor diesem Aufruf.
  */
+/** Entfernt Obsidian-Kommentare (%%…%%) — der Werkstattanteil einer Notiz. */
+function ohneWerkstatt(body) {
+  return body.replace(/%%[\s\S]*?%%/g, '');
+}
+
 function bereinige(body, slugMap = null) {
   const ersetzeWikilink = (_, ziel, alias) => {
     const name = wikiZielName(ziel);
@@ -98,8 +103,7 @@ function bereinige(body, slugMap = null) {
     return slug ? `[${text}](/essays/${slug}/)` : text;
   };
 
-  return body
-    .replace(/%%[\s\S]*?%%/g, '') // Obsidian-Kommentare
+  return ohneWerkstatt(body)
     .replace(/!\[\[[^\]]+\]\]/g, '') // Einbettungen (Bilder etc.) — kommen nicht mit
     .replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, ersetzeWikilink) // [[Ziel|Text]]
     .replace(/\[\[([^\]]+)\]\]/g, (m, ziel) => ersetzeWikilink(m, ziel, null)) // [[Ziel]]
@@ -695,7 +699,11 @@ for (const seite of SEITEN) {
   if (!quelle) continue;
 
   const { body } = parseFrontmatter(readFileSync(quelle, 'utf-8'));
-  const inhalt = seite.erzeuge(body);
+  // %%-Blöcke hier abschneiden, nicht erst in `bereinige`: Lektüre und Quellen
+  // laufen über eigene Generatoren, die `bereinige` nie sehen. Deren Parser
+  // nimmt jede Zeile mit „- " innerhalb einer Rubrik — eine Merkliste im
+  // Werkstattblock wäre sonst als Quellenangabe auf der Seite gelandet.
+  const inhalt = seite.erzeuge(ohneWerkstatt(body));
 
   if (existsSync(seite.ziel) && readFileSync(seite.ziel, 'utf-8') === inhalt) continue;
   kandidaten.push({
