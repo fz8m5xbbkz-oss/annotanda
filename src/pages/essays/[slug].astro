@@ -52,6 +52,8 @@ const karte = existsSync(new URL(`../../../public${kartenPfad}`, import.meta.url
   beschreibung={teaser}
   karte={karte}
   leserModus={true}
+  veroeffentlicht={essay.data.date}
+  rubrik={feld?.name}
 >
   <div class="fortschritt" aria-hidden="true"></div>
   <article>

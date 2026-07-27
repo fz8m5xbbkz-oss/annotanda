@@ -17,7 +17,14 @@ const {
   beschreibung = 'Philosophie aus dem Inneren der Verwaltung. Ein wöchentliches Denktagebuch von Luis.',
   karte = '/og/annotanda.png',
   leserModus = false,
+  // Einzelne Texte sind `article`, Übersichten und Verzeichnisse `website`.
+  // Daran unterscheiden Google und die Vorschau-Robots einen Artikel von einer
+  // Listenseite — vorher war alles `website`.
+  veroeffentlicht,
+  rubrik,
 } = Astro.props;
+
+const istArtikel = Boolean(veroeffentlicht);
 
 const kanonisch = new URL(Astro.url.pathname, Astro.site).toString();
 // Social-Cards liegen als fertige PNGs in public/og/ (siehe karten.mjs).
@@ -47,7 +54,14 @@ const karteAbsolut = new URL(karte, Astro.site).toString();
     <link rel="alternate" type="application/rss+xml" title="annotanda" href="/rss.xml" />
 
     <!-- OpenGraph -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={istArtikel ? 'article' : 'website'} />
+    {istArtikel && (
+      <>
+        <meta property="article:published_time" content={new Date(veroeffentlicht).toISOString()} />
+        <meta property="article:author" content="Luis" />
+        {rubrik && <meta property="article:section" content={rubrik} />}
+      </>
+    )}
     <meta property="og:title" content={titel} />
     <meta property="og:description" content={beschreibung} />
     <meta property="og:url" content={kanonisch} />
