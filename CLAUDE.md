@@ -155,6 +155,23 @@ astro.config.mjs                 site-URL + trailingSlash: always + Sitemap
    einmal nach, committet (Hook pusht, Vercel deployt).
    Alias `annotanda` (in ~/.zshrc) geht von überall.
 
+**Zwei Abfragen vor dem Bestätigungsschritt**, beide über *alle* fertigen
+Texte (nicht nur die geänderten — beides wird typischerweise nachgereicht):
+
+1. **Cross-Post-Links** — fragt pro Text nach fehlender Substack-/Steady-URL,
+   schreibt sie ins Frontmatter der Obsidian-Notiz.
+2. **Quellen** — listet je Text, wie viele Belege im Verzeichnis stehen, und
+   markiert Texte ohne Beleg mit `⚠`. Pro Quelle: Rubrik, Titel, Autor, Jahr,
+   URL, Notiz. Kennt `Quellen.md` den Titel schon, wird **kein zweiter Eintrag
+   angelegt** — der bestehende bekommt nur den Essay-Slug dazu (eine Quelle,
+   ein Eintrag, beliebig viele Texte). Geschrieben wird in die Vault-Notiz
+   `annotanda Seiten/Quellen.md`; `src/data/quellen.js` wird im selben Lauf
+   neu erzeugt, damit nichts zweimal laufen muss.
+
+Beide Abfragen schreiben **zuerst in den Vault**. Brichst du danach beim
+Veröffentlichen ab, stehen die Eingaben schon in Obsidian und der nächste
+Lauf nimmt sie mit.
+
 **Feste Seiten — ebenfalls aus Obsidian (seit Juni 2026):**
 
 Ordner `06 - annotanda/annotanda Seiten/` mit `Über.md`, `Lektüre.md`,

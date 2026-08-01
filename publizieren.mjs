@@ -210,6 +210,62 @@ function parseEintrag(zeile) {
   return e;
 }
 
+/** Baut eine Quellenzeile im Format von Quellen.md (siehe Seiten/_Anleitung). */
+function baueQuellenzeile({ autor, titel, jahr, url, notiz, slug }) {
+  const titelTeil = url ? `[${titel}](${url})` : titel;
+  let s = `- ${autor ? `${autor}: ` : ''}${titelTeil}`;
+  if (jahr) s += ` (${jahr})`;
+  if (notiz) s += ` — ${notiz}`;
+  return `${s} {${slug}}`;
+}
+
+const normTitel = (s) => String(s || '').toLowerCase().replace(/\s+/g, ' ').trim();
+
+/**
+ * Steht die Quelle schon im Verzeichnis, bekommt sie nur den Essay-Slug dazu —
+ * eine Quelle, ein Eintrag, auch wenn sie in mehreren Essays vorkommt.
+ * Gibt `null` zurück, wenn es die Quelle noch nicht gibt.
+ */
+function ergaenzeEssayMarke(body, titel, slug) {
+  const zeilen = body.split(/\r?\n/);
+  for (let i = 0; i < zeilen.length; i++) {
+    if (!/^\s*[-*]\s+/.test(zeilen[i])) continue;
+    const e = parseEintrag(zeilen[i]);
+    if (!e || normTitel(e.titel) !== normTitel(titel)) continue;
+    const slugs = e.essays || [];
+    if (slugs.includes(slug)) return { body, status: 'schon-da' };
+    const ohneMarke = zeilen[i].replace(/\s*\{[^}]*\}\s*$/, '');
+    zeilen[i] = `${ohneMarke} {${[...slugs, slug].join(', ')}}`;
+    return { body: zeilen.join('\n'), status: 'ergaenzt' };
+  }
+  return null;
+}
+
+/**
+ * Hängt eine Zeile ans Ende der genannten Rubrik. Bewusst ans Sektionsende und
+ * nicht ans Dateiende — sonst landet der Eintrag unter der falschen Überschrift.
+ */
+function fuegeQuellenzeileEin(body, ueberschrift, zeile) {
+  const zeilen = body.split(/\r?\n/);
+  const istUeberschrift = (z) => /^#{1,6}\s+/.test(z);
+  const titelVon = (z) => z.replace(/^#+\s+/, '').trim().toLowerCase();
+
+  const start = zeilen.findIndex(
+    (z) => istUeberschrift(z) && titelVon(z) === ueberschrift.toLowerCase()
+  );
+  if (start === -1) return null;
+
+  let ende = start + 1;
+  while (ende < zeilen.length && !istUeberschrift(zeilen[ende])) ende++;
+
+  // Hinter den letzten Eintrag, aber vor die Leerzeilen zur nächsten Rubrik
+  let einfuege = ende;
+  while (einfuege > start + 1 && !zeilen[einfuege - 1].trim()) einfuege--;
+
+  zeilen.splice(einfuege, 0, zeile);
+  return zeilen.join('\n');
+}
+
 /** Body in { sektionsschlüssel: [einträge] } zerlegen, Überschriften per Map */
 function parseSektionen(body, headingMap) {
   const map = {};
@@ -829,6 +885,136 @@ if (ohneLink.length > 0) {
           ziel: e.ziel,
           inhalt,
           url: e.url,
+        });
+      }
+    }
+  }
+}
+
+// ── Quellen eintragen ──────────────────────────────────────────────────────
+// Pro fertigem Text fragen, worauf er sich stützt. Der Eintrag geht zuerst in
+// die Obsidian-Notiz `annotanda Seiten/Quellen.md` (Quelle der Wahrheit), von
+// dort im selben Lauf in `src/data/quellen.js` — daraus baut die Website den
+// Quellenapparat unter dem Text und die Zeile „Erwähnt in …" im Verzeichnis.
+// Bewusst ALLE fertigen Texte, nicht nur die geänderten: Belege werden meist
+// nachgereicht, nicht am Tag der Veröffentlichung.
+
+const RUBRIKEN = [
+  { nr: '1', ueberschrift: 'Primärtexte', label: 'Primärtext' },
+  { nr: '2', ueberschrift: 'Bücher', label: 'Buch' },
+  { nr: '3', ueberschrift: 'Aufsätze', label: 'Aufsatz' },
+  { nr: '4', ueberschrift: 'Online', label: 'Online' },
+];
+
+const quellenSeite = SEITEN.find((s) => s.name === 'Quellen');
+const quellenDatei = quellenSeite && findeDatei(SEITEN_VAULT, quellenSeite.vault);
+const alleTexte = [...fertigeEssays, ...fertigeResuemees, ...fertigeGrundlagen];
+
+if (quellenDatei && alleTexte.length > 0) {
+  // Rohen Frontmatter-Kopf behalten: parseFrontmatter gibt nur die geparsten
+  // Werte zurück, beim Zurückschreiben ginge die Originalform sonst verloren.
+  const roh = readFileSync(quellenDatei, 'utf-8');
+  const kopf = (roh.match(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/) || [''])[0];
+  const startBody = roh.slice(kopf.length);
+  let body = startBody;
+
+  const zaehle = (b) => {
+    const proSlug = new Map();
+    for (const q of parseQuellen(ohneWerkstatt(b))) {
+      for (const s of q.essays || []) proSlug.set(s, (proSlug.get(s) || 0) + 1);
+    }
+    return proSlug;
+  };
+
+  const stand = zaehle(body);
+  const ohneQuellen = alleTexte.filter((t) => !stand.get(t.slug));
+
+  console.log('\n── Quellen ──────────────────────────────────────────────\n');
+  for (const t of alleTexte) {
+    const n = stand.get(t.slug) || 0;
+    const marke = n === 0 ? '⚠ ohne Quelle ' : `  ${String(n).padStart(2)} Quellen  `;
+    console.log(`  ${marke}  ${t.titel}`);
+  }
+  if (ohneQuellen.length) {
+    console.log(`\n  ${ohneQuellen.length} Text(e) ohne Beleg — die Quellenseite verspricht,`);
+    console.log('  „worauf sich die Gedanken stützen".');
+  }
+
+  const jetzt = await frage('\nQuellen jetzt eintragen? [j/N] ');
+
+  if (jetzt.trim().toLowerCase() === 'j') {
+    for (const t of alleTexte) {
+      let weiter = (await frage(`\n  „${t.titel}" — Quelle hinzufügen? [j/N] `)).trim().toLowerCase();
+
+      while (weiter === 'j') {
+        const rubrikEingabe = (
+          await frage(`    Rubrik? ${RUBRIKEN.map((r) => `[${r.nr}] ${r.label}`).join('  ')}: `)
+        ).trim();
+        const rubrik = RUBRIKEN.find((r) => r.nr === rubrikEingabe);
+        if (!rubrik) {
+          console.log('    ⚠ Keine gültige Rubrik — Eintrag verworfen.');
+          weiter = (await frage('    Noch eine? [j/N] ')).trim().toLowerCase();
+          continue;
+        }
+
+        const titel = (await frage('    Titel: ')).trim();
+        if (!titel) {
+          console.log('    ⚠ Ohne Titel kein Eintrag — verworfen.');
+          weiter = (await frage('    Noch eine? [j/N] ')).trim().toLowerCase();
+          continue;
+        }
+
+        // Kennt das Verzeichnis die Quelle schon, wird nur der Text vermerkt.
+        const ergaenzt = ergaenzeEssayMarke(body, titel, t.slug);
+        if (ergaenzt) {
+          body = ergaenzt.body;
+          console.log(
+            ergaenzt.status === 'schon-da'
+              ? '    ○ Steht dort bereits für diesen Text — nichts geändert.'
+              : `    ✓ Bestehender Eintrag „${titel}" um diesen Text ergänzt.`
+          );
+          weiter = (await frage('    Noch eine? [j/N] ')).trim().toLowerCase();
+          continue;
+        }
+
+        const autor = (await frage('    Autor (Enter = keiner): ')).trim();
+        const jahr = (await frage('    Jahr (Enter = keins): ')).trim();
+        const url = (await frage('    URL (Enter = keine): ')).trim();
+        if (url && !istUrl(url)) console.log('    ⚠ Sieht nicht nach einer URL aus — wird trotzdem übernommen.');
+        const notiz = (await frage('    Notiz, z. B. Fundstelle (Enter = keine): ')).trim();
+
+        const zeile = baueQuellenzeile({ autor, titel, jahr, url, notiz, slug: t.slug });
+        const neu = fuegeQuellenzeileEin(body, rubrik.ueberschrift, zeile);
+        if (!neu) {
+          console.log(`    ⚠ Rubrik „## ${rubrik.ueberschrift}" fehlt in Quellen.md — Eintrag verworfen.`);
+        } else {
+          body = neu;
+          console.log(`    ✓ ${zeile.replace(/^- /, '')}`);
+        }
+
+        weiter = (await frage('    Noch eine? [j/N] ')).trim().toLowerCase();
+      }
+    }
+
+    if (body !== startBody) {
+      writeFileSync(quellenDatei, kopf + body, 'utf-8');
+      vaultGeaendert = true;
+
+      // quellen.js im selben Lauf neu erzeugen — die Seiten wurden weiter oben
+      // schon eingesammelt und kennen die neuen Einträge sonst nicht.
+      const inhalt = quellenSeite.erzeuge(ohneWerkstatt(body));
+      const schon = kandidaten.find((k) => k.ziel === quellenSeite.ziel);
+      if (schon) {
+        schon.inhalt = inhalt;
+      } else if (!(existsSync(quellenSeite.ziel) && readFileSync(quellenSeite.ziel, 'utf-8') === inhalt)) {
+        kandidaten.push({
+          art: existsSync(quellenSeite.ziel) ? 'aktualisiert' : 'neu',
+          label: 'Seite: Quellen',
+          name: 'Quellen',
+          seite: true,
+          ziel: quellenSeite.ziel,
+          inhalt,
+          url: `https://www.annotanda.com${quellenSeite.pfad}`,
         });
       }
     }
