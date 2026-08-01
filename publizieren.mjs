@@ -18,6 +18,9 @@
  *     existiert (im Repo oder in diesem Lauf mit status:fertig), wird ein
  *     interner Link /essays/<slug>/ daraus — sonst wie bisher reiner Text
  *     (nie ein 404-Link).
+ *   - Essay-Titel 1:1 im Fließtext werden ebenfalls zum Link — aber nur beim
+ *     ersten Vorkommen, nie im eigenen Essay und nie in Anführungszeichen
+ *     (dort steht Zitat oder Rede). Siehe verlinkeTitel().
  *   - Seiten: feste Dateinamen Über.md / Lektüre.md / Quellen.md.
  *     Über = freies Markdown. Lektüre/Quellen = Listen unter Überschriften
  *     (siehe _Anleitung.md im Seiten-Ordner).
@@ -83,19 +86,89 @@ function wikiZielName(ziel) {
 
 const normKey = (s) => s.normalize('NFC').toLowerCase().trim();
 
+/** Entfernt Obsidian-Kommentare (%%…%%) — der Werkstattanteil einer Notiz. */
+function ohneWerkstatt(body) {
+  return body.replace(/%%[\s\S]*?%%/g, '');
+}
+
+/**
+ * Schreibt ein Essay-Titel im Fließtext als Link auf den Essay.
+ *
+ * Warum mit so vielen Ausnahmen: annotanda-Titel sind teils gewöhnliche Sätze.
+ * „Dafür bin ich nicht zuständig" steht im gleichnamigen Essay als wörtliche
+ * Rede der Frau am Schalter — würde das verlinkt, wären Dialogzeilen plötzlich
+ * Links. Deshalb gilt:
+ *
+ *   - **nie im eigenen Essay** (kein Selbstlink)
+ *   - **nur das erste Vorkommen** je Ziel-Essay
+ *   - **nicht in Anführungszeichen** („…", »…«, "…") — dort steht bei Luis
+ *     Zitat oder Rede; für den ausdrücklichen Titelverweis gibt es `[[…]]`
+ *   - nicht in Überschriften, Code, bestehenden Links und Bildunterschriften
+ *
+ * `[[Titel]]` bleibt der ausdrückliche Weg und funktioniert überall.
+ */
+function verlinkeTitel(text, titel = [], eigenerSlug = null) {
+  const ziele = titel
+    .filter((e) => e.slug !== eigenerSlug)
+    .sort((a, b) => b.titel.length - a.titel.length); // längere Titel zuerst
+  if (!ziele.length) return { text, gesetzt: [] };
+
+  // Zonen, die unangetastet bleiben. Reihenfolge = Priorität beim Scannen.
+  const geschuetzt = new RegExp(
+    [
+      '```[\\s\\S]*?```', // Codeblock
+      '`[^`\\n]*`', // Code im Satz
+      '!?\\[[^\\]]*\\]\\([^)]*\\)', // bestehender Link / Bild
+      '^#{1,6}[^\\n]*$', // Überschrift
+      '„[^"\\n]*"', // deutsches Zitat
+      '»[^«»\\n]*«',
+      '"[^"\\n]*"',
+      "'[^'\\n]*'",
+    ].join('|'),
+    'gm'
+  );
+
+  const gesetzt = [];
+  const schonGesetzt = new Set();
+
+  const bearbeite = (stueck) => {
+    let s = stueck;
+    for (const ziel of ziele) {
+      if (schonGesetzt.has(ziel.slug)) continue;
+      const escaped = ziel.titel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      // Keine Treffer mitten im Wort
+      const re = new RegExp(`(?<![\\wÄÖÜäöüß])(${escaped})(?![\\wÄÖÜäöüß])`);
+      if (!re.test(s)) continue;
+      s = s.replace(re, `[$1](/essays/${ziel.slug}/)`);
+      schonGesetzt.add(ziel.slug);
+      gesetzt.push(ziel.titel);
+    }
+    return s;
+  };
+
+  let out = '';
+  let letztes = 0;
+  for (const m of text.matchAll(geschuetzt)) {
+    out += bearbeite(text.slice(letztes, m.index)) + m[0];
+    letztes = m.index + m[0].length;
+  }
+  out += bearbeite(text.slice(letztes));
+
+  return { text: out, gesetzt };
+}
+
+/** Protokoll der automatisch gesetzten Titel-Links — wird vor dem Bestätigen gezeigt. */
+const autoVerlinkt = [];
+
 /**
  * Obsidian-Syntax in normales Markdown übersetzen.
  * `slugMap` (normalisierter Titel/Dateiname → Essay-Slug) löst Wikilinks zu
  * internen Links auf; ohne Treffer bleibt das alte Verhalten: reiner Text.
  * Wichtig: %%-Blöcke fliegen ZUERST raus — Werkstatt-Wikilinks werden nie
  * zu Links, und die Mermaid-Extraktion passiert schon vor diesem Aufruf.
+ * `kontext.slug` verhindert, dass ein Text sich selbst verlinkt.
  */
-/** Entfernt Obsidian-Kommentare (%%…%%) — der Werkstattanteil einer Notiz. */
-function ohneWerkstatt(body) {
-  return body.replace(/%%[\s\S]*?%%/g, '');
-}
-
-function bereinige(body, slugMap = null) {
+function bereinige(body, slugMap = null, kontext = {}) {
   const ersetzeWikilink = (_, ziel, alias) => {
     const name = wikiZielName(ziel);
     const text = (alias || name).trim();
@@ -103,11 +176,17 @@ function bereinige(body, slugMap = null) {
     return slug ? `[${text}](/essays/${slug}/)` : text;
   };
 
-  return ohneWerkstatt(body)
+  const zwischen = ohneWerkstatt(body)
     .replace(/!\[\[[^\]]+\]\]/g, '') // Einbettungen (Bilder etc.) — kommen nicht mit
     .replace(/\[\[([^\]|]+)\|([^\]]+)\]\]/g, ersetzeWikilink) // [[Ziel|Text]]
-    .replace(/\[\[([^\]]+)\]\]/g, (m, ziel) => ersetzeWikilink(m, ziel, null)) // [[Ziel]]
-    .trim();
+    .replace(/\[\[([^\]]+)\]\]/g, (m, ziel) => ersetzeWikilink(m, ziel, null)); // [[Ziel]]
+
+  // Erst jetzt die 1:1-Titel im Fließtext — die Wikilinks sind schon Links und
+  // damit eine geschützte Zone, werden also nicht ein zweites Mal angefasst.
+  const { text, gesetzt } = verlinkeTitel(zwischen, titelListe, kontext.slug);
+  if (gesetzt.length) autoVerlinkt.push({ text: kontext.titel || kontext.slug, ziele: gesetzt });
+
+  return text.trim();
 }
 
 /**
@@ -420,8 +499,20 @@ function genArgumente(liste) {
 
 const slugMap = new Map();
 
+// Zusätzlich die Anzeige-Titel: aus ihnen werden im Fließtext automatisch
+// Links, wenn ein Titel 1:1 dasteht (siehe verlinkeTitel). Nur echte Titel,
+// keine Dateinamen — sonst würde ein Slug mitten im Satz zum Link.
+const titelListe = []; // { titel, slug }
+
 function merkeSlug(schluessel, slug) {
   if (schluessel) slugMap.set(normKey(schluessel), slug);
+}
+
+function merkeTitel(titel, slug) {
+  const t = String(titel || '').trim();
+  if (!t) return;
+  if (titelListe.some((e) => normKey(e.titel) === normKey(t))) return;
+  titelListe.push({ titel: t, slug });
 }
 
 if (existsSync(ESSAY_ORDNER)) {
@@ -431,6 +522,7 @@ if (existsSync(ESSAY_ORDNER)) {
     const { daten } = parseFrontmatter(readFileSync(join(ESSAY_ORDNER, datei), 'utf-8'));
     merkeSlug(slug, slug);
     merkeSlug(daten.title, slug);
+    merkeTitel(daten.title, slug);
   }
 }
 
@@ -444,6 +536,7 @@ if (existsSync(ESSAY_VAULT)) {
     const slug = slugify(daten.slug || titel);
     merkeSlug(basename(datei, '.md'), slug); // Wikilinks zeigen auf den Dateinamen
     merkeSlug(titel, slug);
+    merkeTitel(titel, slug);
   }
 }
 
@@ -521,7 +614,7 @@ if (existsSync(ESSAY_VAULT)) {
         .replace(/```mermaid\r?\n[\s\S]*?```\r?\n?/g, '');
     }
 
-    const text = bereinige(essayRoh.replace(/^\s*#\s+.+\r?\n+/, ''), slugMap);
+    const text = bereinige(essayRoh.replace(/^\s*#\s+.+\r?\n+/, ''), slugMap, { slug, titel });
     if (!text) {
       console.log(`· „${titel}" ist noch leer — übersprungen.`);
       continue;
@@ -593,7 +686,7 @@ if (existsSync(RESUEMEE_VAULT)) {
     const datum = daten.date || new Date().toISOString().split('T')[0];
     const buch = daten.buch || null;
 
-    const text = bereinige(body.replace(/^\s*#\s+.+\r?\n+/, ''), slugMap);
+    const text = bereinige(body.replace(/^\s*#\s+.+\r?\n+/, ''), slugMap, { slug, titel });
     if (!text) {
       console.log(`· „${titel}" ist noch leer — übersprungen.`);
       continue;
@@ -659,7 +752,7 @@ if (existsSync(GRUNDLAGEN_VAULT)) {
     const slug = slugify(daten.slug || titel);
     const datum = daten.date || new Date().toISOString().split('T')[0];
 
-    const text = bereinige(body.replace(/^\s*#\s+.+\r?\n+/, ''), slugMap);
+    const text = bereinige(body.replace(/^\s*#\s+.+\r?\n+/, ''), slugMap, { slug, titel });
     if (!text) {
       console.log(`· „${titel}" ist noch leer — übersprungen.`);
       continue;
@@ -732,7 +825,7 @@ const SEITEN = [
     vault: 'Über.md',
     ziel: join(__dir, 'src/inhalte/ueber.md'),
     pfad: '/ueber/',
-    erzeuge: (body) => bereinige(body, slugMap) + '\n',
+    erzeuge: (body) => bereinige(body, slugMap, { titel: 'Seite: Über' }) + '\n',
   },
   {
     name: 'Lektüre',
@@ -1034,6 +1127,16 @@ console.log('\n── annotanda · publizieren ───────────
 for (const k of kandidaten) {
   const marke = k.art === 'neu' ? '＋ neu        ' : '↻ aktualisiert';
   console.log(`  ${marke}  ${k.label}`);
+}
+
+// Automatisch gesetzte Titel-Links offenlegen — sie stehen so nicht in der
+// Notiz, und ein ungewollter Link im Fließtext fällt sonst erst online auf.
+if (autoVerlinkt.length) {
+  console.log('\n  Titel automatisch verlinkt:');
+  for (const e of autoVerlinkt) {
+    console.log(`    ${e.text} → ${e.ziele.join(', ')}`);
+  }
+  console.log('    (nicht gewollt? Titel in „…" setzen oder umformulieren)');
 }
 
 const antwort = await frage(`\nVeröffentlichen? Commit + Push + Vercel-Deploy folgen. [j/N] `);

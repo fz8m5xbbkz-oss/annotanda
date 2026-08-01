@@ -168,6 +168,14 @@ Texte (nicht nur die geänderten — beides wird typischerweise nachgereicht):
    `annotanda Seiten/Quellen.md`; `src/data/quellen.js` wird im selben Lauf
    neu erzeugt, damit nichts zweimal laufen muss.
 
+**Interne Verweise** entstehen auf zwei Wegen: `[[Titel]]` (ausdrücklich,
+wirkt überall) und ein Essay-Titel 1:1 im Fließtext (automatisch). Der
+automatische Weg greift bewusst **nicht** im eigenen Essay, nur beim ersten
+Vorkommen und **nicht in Anführungszeichen** — annotanda-Titel sind teils
+gewöhnliche Sätze („Dafür bin ich nicht zuständig" ist im gleichnamigen Essay
+wörtliche Rede). Gesetzte Auto-Links werden vor dem Bestätigen aufgelistet.
+Details und Schutzzonen in `verlinkeTitel()`.
+
 Beide Abfragen schreiben **zuerst in den Vault**. Brichst du danach beim
 Veröffentlichen ab, stehen die Eingaben schon in Obsidian und der nächste
 Lauf nimmt sie mit.
