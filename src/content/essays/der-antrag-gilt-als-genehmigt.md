@@ -1,0 +1,32 @@
+---
+title: "Der Antrag gilt als genehmigt"
+date: 2026-08-02
+substack_url: "https://open.substack.com/pub/luisfzl/p/der-antrag-gilt-als-genehmigt?r=6fibu5&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
+steady_url: "https://steady.page/de/annotanda/posts/5a544844-78bf-442a-810e-0b4e9171e1c9"
+---
+
+Es beginnt mit einem Wunsch. Ein behinderter Mensch beantragt eine Leistung zur Teilhabe am Arbeitsleben. Es startet eine 6-wöchige Beantwortungsfrist des Integrationsamtes. Läuft diese ab, gilt der Antrag dennoch als bewilligt — aber nur, wenn kein Ermessensspielraum vorlag. So § 185 SGB IX. Die Zeit fällt die Entscheidung, die Behörde verliert die aktive Handlung in der Antragsbearbeitung. Schweigen erzeugt Recht — aber wer hat hier eigentlich etwas gesagt?
+
+Die Genehmigungsfiktion (§ 42a VwVfG) hält fest: Wenn die Frist einer beantragten Genehmigung abgelaufen ist und es durch die Rechtsvorschrift angeordnet ist, gilt ein hinreichend bestimmter Antrag als genehmigt. Solange die Rechtsvorschrift nichts anderes sagt, gilt die Frist drei Monate. Auf Verlangen ist die Verwaltungsbestätigung auszustellen. Das klingt, als würde die Zeit entscheiden und nicht die Verwaltungsbehörde. Sie bestätigt lediglich.
+
+Die in der Einleitung angesprochene Beantwortungsfrist des Integrationsamtes gilt nur in Fällen, in denen das Integrationsamt keinen Ermessensspielraum hat. Sobald die Entscheidung nicht „gebunden" ist, entscheidet der Mensch „selbst" (warum „selbst" in Anführungszeichen steht, könnt ihr in meinem Essay „Der Paragraphen-Automat und die Maxime" lesen). Die Zeit darf nur dort den Sprecher ersetzen, wo das Gesetz die Antwort vorgibt. Denn Abwägen kann die Zeit nicht.
+
+Die Verwaltung hat die Idee der Genehmigungsfiktion nicht selbst in die Gesetzgebung eingebaut. Sie ist kein Teil deutscher Verwaltungslogik. Denn die EU-Dienstleistungsrichtlinie (2006/123/EG) verlangte „Genehmigungsfiktion oder Fristablauf mit Rechtsbehelf" als Standard für grenzüberschreitende Dienstleister. Dadurch schaffte es die Regelung auch in weitere Gesetzesbücher. Die Gewerbeordnung sieht in § 6a vor: „Hat die Behörde über einen Antrag auf Erlaubnis zur Ausübung eines Gewerbes nach § 34b Abs. 1, 3, 4, § 34c Abs. 1 S. 1 Nr. 1, 3 und 4 oder § 55 Abs. 2 nicht innerhalb einer Frist von drei Monaten entschieden, gilt die Erlaubnis als erteilt." Somit presst eine EU-Richtlinie unbemerkt eine neue philosophische Frage in die deutschen Gesetzbücher.
+
+Doch die Genehmigungsfiktion schafft ein philosophisches Problem — eines, das der amerikanische Philosoph John Searle genauer erläutert. Dieser veröffentlichte 1969 die Sprechakttheorie, in welcher er unter anderem eine Sprechaktklassifikation vorschlug. Eine darunter ist die Klasse der Deklarationen. Infolge einer Deklaration wechseln Entitäten ihre Zustände im Gefüge gesellschaftlicher Institutionen. Da es keine zusätzliche Klasse geben kann, gibt es eine Anpassungsrichtung, welche bei der Deklaration wie folgt aussieht: Welt ↔ Wörter. Das bedeutet, eine Behauptung muss zur Welt passen (Wörter → Welt), ein Versprechen soll die Welt später zur Aussage passend machen (Welt → Wörter). Der Sprechakt erzeugt eine neue Wirklichkeit im selben Moment — Welt und Wörter passen sich gleichzeitig an. Die Deklaration ist die einzige der Sprechaktklassen, welche dies gleichzeitig tut. Deshalb der Doppelpfeil. Unter die Klasse der Deklarationen fällt auch die Genehmigung eines Antrags. Im Fallbeispiel der Genehmigungsfiktion fehlt die Deklaration jedoch. In der Genehmigung eines Rechtsaktes wird einer der wichtigsten Teile vergessen: der Sprechakt. Dieser gelingt auch nur, wenn der Sprecher über den entsprechenden Zustand verfügt. Die Fiktion setzt Rechtswirkung, ohne dass jemand die Absicht gehabt hat, sie zu erzeugen.
+
+Searle entwickelte seine Theorie in seinen späteren Arbeiten in Richtung der sozialen Ontologie weiter. Dabei entstand die Konstitutionsregel in „The Construction of Social Reality" (1995). Diese besagt: X gilt als Y im Kontext K — unter der Voraussetzung, dass Sprecher und Hörer den institutionellen Rahmen anerkennen und die richtige Autorität die Deklaration vollzieht. Durch die Unterschrift (X) würde der Antrag (Y) im Verwaltungsrecht (K) genehmigt. Die Genehmigungsfiktion überspringt X. Der Beamte als einzelne Person muss die Position des Vollziehers nicht einnehmen. Der Gesetzgeber schafft eine institutionelle und generelle Regel weit im Voraus. Der Sprecher wird nicht von der Zeit ersetzt, er selbst ist die Zeit.
+## Idee
+
+Der Fall ist der Text, Austin ist das Werkzeug — nicht umgekehrt. Ein Paragraph, ein Gedanke: § 42a VwVfG lässt einen Antrag nach Fristablauf automatisch als genehmigt gelten. Kein Sachbearbeiter unterschreibt, kein Bescheid wird geschrieben — der Verwaltungsakt entsteht durch bloßes Verstreichen von Zeit. Austins Sprechakttheorie hält fest, dass ein performativer Akt (ich erkläre, ich verspreche, ich genehmige) einen Sprecher braucht, der ihn in der passenden Situation vollzieht — sonst ist er „unhappy", misslungen. Die Genehmigungsfiktion ist der Fall, in dem die Rechtsfolge einer Genehmigung eintritt, ohne dass irgendjemand sie ausgesprochen hat.
+X gilt als Y im Kontext K.
+
+
+---
+
+### Quellen
+- 
+
+### Verbindungen
+- → annotanda
+- → [Der Paragraphen-Automat und die Maxime](/essays/der-paragraphen-automat-und-die-maxime/) (Ermessen/Norm-Deutung — hier: Norm ohne jede Deutung)

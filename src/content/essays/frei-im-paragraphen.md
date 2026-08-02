@@ -1,6 +1,6 @@
 ---
 title: "Frei im Paragraphen"
-date: 2026-07-26
+date: 2026-08-02
 substack_url: "https://open.substack.com/pub/luisfzl/p/frei-im-paragraphen?r=6fibu5&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
 steady_url: "https://steady.page/de/annotanda/posts/4d1b30d2-3dc4-41f8-9152-93a07edb043f?utm_campaign=steady_sharing_button"
 ---
