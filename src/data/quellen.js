@@ -27,6 +27,45 @@ export const quellen = [
   },
   {
     "essays": [
+      "der-antrag-gilt-als-genehmigt"
+    ],
+    "notiz": "Genehmigungsfiktion](https://www.gesetze-im-internet.de/vwvfg/__42a.html) — die Grundnorm des Essays: Dreimonatsfrist, Bestimmtheitserfordernis, Bestätigung auf Verlangen; im Essay paraphrasiert",
+    "autor": "Verwaltungsverfahrensgesetz",
+    "titel": "[§ 42a VwVfG",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
+      "der-antrag-gilt-als-genehmigt"
+    ],
+    "notiz": "Sechswochenfrist des Integrationsamts, greift nur bei gebundenen Entscheidungen; der Einstiegsfall des Essays",
+    "autor": "Sozialgesetzbuch IX",
+    "titel": "§ 185 SGB IX",
+    "url": "https://www.gesetze-im-internet.de/sgb_9_2018/__185.html",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
+      "der-antrag-gilt-als-genehmigt"
+    ],
+    "notiz": "Dreimonatsfrist für Erlaubnisse nach §§ 34b, 34c und 55; im Essay wörtlich zitiert",
+    "autor": "Gewerbeordnung",
+    "titel": "§ 6a GewO",
+    "url": "https://www.gesetze-im-internet.de/gewo/__6a.html",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
+      "der-antrag-gilt-als-genehmigt"
+    ],
+    "notiz": "Art. 13 Abs. 4: „gilt die Genehmigung als erteilt\"; Ursprung der deutschen Regelung",
+    "autor": "Europäische Union",
+    "titel": "Richtlinie 2006/123/EG über Dienstleistungen im Binnenmarkt",
+    "url": "https://eur-lex.europa.eu/legal-content/DE/ALL/?uri=CELEX:32006L0123",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
       "dafuer-bin-ich-nicht-zustaendig"
     ],
     "notiz": "prägt den Begriff der „Herrschaft des Niemand\" (dt. Piper 1970), im Essay referenziert, nicht wörtlich zitiert",
@@ -130,6 +169,26 @@ export const quellen = [
   },
   {
     "essays": [
+      "der-antrag-gilt-als-genehmigt"
+    ],
+    "notiz": "die Sprechakttheorie; Grundlage der Deklaration als Sprechakt",
+    "jahr": 1969,
+    "autor": "Searle, John R.",
+    "titel": "Speech Acts. An Essay in the Philosophy of Language",
+    "typ": "buch"
+  },
+  {
+    "essays": [
+      "der-antrag-gilt-als-genehmigt"
+    ],
+    "notiz": "die Konstitutionsregel „X gilt als Y im Kontext K\", im Essay namentlich angeführt",
+    "jahr": 1995,
+    "autor": "Searle, John R.",
+    "titel": "The Construction of Social Reality",
+    "typ": "buch"
+  },
+  {
+    "essays": [
       "dafuer-bin-ich-nicht-zustaendig"
     ],
     "notiz": "Hannah Arendts Konzept der „Herrschaft des Niemand\", im Essay wörtlich zitiert",
@@ -146,6 +205,16 @@ export const quellen = [
     "jahr": 1983,
     "autor": "Libet, Benjamin u. a.",
     "titel": "Time of conscious intention to act in relation to onset of cerebral activity (readiness-potential)",
+    "typ": "aufsatz"
+  },
+  {
+    "essays": [
+      "der-antrag-gilt-als-genehmigt"
+    ],
+    "notiz": "in: Language, Mind and Knowledge; hier erst die fünf Klassen mit den Deklarationen und den Anpassungsrichtungen, auf denen der Essay aufbaut",
+    "jahr": 1975,
+    "autor": "Searle, John R.",
+    "titel": "A Taxonomy of Illocutionary Acts",
     "typ": "aufsatz"
   }
 ];
