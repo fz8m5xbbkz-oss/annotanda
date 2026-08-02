@@ -16,17 +16,3 @@ Die Verwaltung hat die Idee der Genehmigungsfiktion nicht selbst in die Gesetzge
 Doch die Genehmigungsfiktion schafft ein philosophisches Problem — eines, das der amerikanische Philosoph John Searle genauer erläutert. Dieser veröffentlichte 1969 die Sprechakttheorie, in welcher er unter anderem eine Sprechaktklassifikation vorschlug. Eine darunter ist die Klasse der Deklarationen. Infolge einer Deklaration wechseln Entitäten ihre Zustände im Gefüge gesellschaftlicher Institutionen. Da es keine zusätzliche Klasse geben kann, gibt es eine Anpassungsrichtung, welche bei der Deklaration wie folgt aussieht: Welt ↔ Wörter. Das bedeutet, eine Behauptung muss zur Welt passen (Wörter → Welt), ein Versprechen soll die Welt später zur Aussage passend machen (Welt → Wörter). Der Sprechakt erzeugt eine neue Wirklichkeit im selben Moment — Welt und Wörter passen sich gleichzeitig an. Die Deklaration ist die einzige der Sprechaktklassen, welche dies gleichzeitig tut. Deshalb der Doppelpfeil. Unter die Klasse der Deklarationen fällt auch die Genehmigung eines Antrags. Im Fallbeispiel der Genehmigungsfiktion fehlt die Deklaration jedoch. In der Genehmigung eines Rechtsaktes wird einer der wichtigsten Teile vergessen: der Sprechakt. Dieser gelingt auch nur, wenn der Sprecher über den entsprechenden Zustand verfügt. Die Fiktion setzt Rechtswirkung, ohne dass jemand die Absicht gehabt hat, sie zu erzeugen.
 
 Searle entwickelte seine Theorie in seinen späteren Arbeiten in Richtung der sozialen Ontologie weiter. Dabei entstand die Konstitutionsregel in „The Construction of Social Reality" (1995). Diese besagt: X gilt als Y im Kontext K — unter der Voraussetzung, dass Sprecher und Hörer den institutionellen Rahmen anerkennen und die richtige Autorität die Deklaration vollzieht. Durch die Unterschrift (X) würde der Antrag (Y) im Verwaltungsrecht (K) genehmigt. Die Genehmigungsfiktion überspringt X. Der Beamte als einzelne Person muss die Position des Vollziehers nicht einnehmen. Der Gesetzgeber schafft eine institutionelle und generelle Regel weit im Voraus. Der Sprecher wird nicht von der Zeit ersetzt, er selbst ist die Zeit.
-## Idee
-
-Der Fall ist der Text, Austin ist das Werkzeug — nicht umgekehrt. Ein Paragraph, ein Gedanke: § 42a VwVfG lässt einen Antrag nach Fristablauf automatisch als genehmigt gelten. Kein Sachbearbeiter unterschreibt, kein Bescheid wird geschrieben — der Verwaltungsakt entsteht durch bloßes Verstreichen von Zeit. Austins Sprechakttheorie hält fest, dass ein performativer Akt (ich erkläre, ich verspreche, ich genehmige) einen Sprecher braucht, der ihn in der passenden Situation vollzieht — sonst ist er „unhappy", misslungen. Die Genehmigungsfiktion ist der Fall, in dem die Rechtsfolge einer Genehmigung eintritt, ohne dass irgendjemand sie ausgesprochen hat.
-X gilt als Y im Kontext K.
-
-
----
-
-### Quellen
-- 
-
-### Verbindungen
-- → annotanda
-- → [Der Paragraphen-Automat und die Maxime](/essays/der-paragraphen-automat-und-die-maxime/) (Ermessen/Norm-Deutung — hier: Norm ohne jede Deutung)
