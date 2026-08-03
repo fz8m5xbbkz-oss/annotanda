@@ -78,7 +78,7 @@ export const quellen = [
     "essays": [
       "der-paragraphen-automat-und-die-maxime"
     ],
-    "notiz": "Beiträge aus dem Fachbereich Allgemeine Verwaltung, Heft 17 (HWR Berlin); die im Essay zitierten Stimmen (Faust, Wüstner, Lege, Prümm) sind hierüber erschlossen",
+    "notiz": "Beiträge aus dem Fachbereich Allgemeine Verwaltung, Heft 17 (HWR Berlin); die im Essay zitierten Stimmen (Faust, Wüstner, Lege, Prümm, Simon, Adomeit) sind hierüber erschlossen, nicht im Original gelesen",
     "jahr": 2013,
     "autor": "Lück-Schneider, Dagmar / Kirstein, Denis (Hrsg.)",
     "titel": "Verwaltungsethik – Selbstverständnis und Themenfelder in Lehre, Forschung und Praxis an den FHöD",
