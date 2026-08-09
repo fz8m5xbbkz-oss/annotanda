@@ -1126,6 +1126,156 @@ if (quellenDatei && alleTexte.length > 0) {
   }
 }
 
+// ── Argument-Karte anlegen ─────────────────────────────────────────────────
+// Nimmt die Mermaid-Syntax ab: Knoten-IDs, Zeilenumbrüche und Kanten entstehen
+// aus den Antworten. Inhaltlich bleibt alles bei Luis — das Skript erfindet
+// keine Argumentation, es formatiert sie nur. Geschrieben wird in die
+// Obsidian-Notiz; argumente.js entsteht im selben Lauf neu.
+
+/** Bricht eine Beschriftung an Wortgrenzen um — Mermaid kennt kein Umbruch. */
+function umbreche(text, breite = 46) {
+  const worte = text.trim().split(/\s+/);
+  const zeilen = [];
+  let z = '';
+  for (const w of worte) {
+    if (z && (z + ' ' + w).length > breite) {
+      zeilen.push(z);
+      z = w;
+    } else {
+      z = z ? z + ' ' + w : w;
+    }
+  }
+  if (z) zeilen.push(z);
+  return zeilen.join('<br>');
+}
+
+/** Mermaid-Beschriftungen stehen in "…" — innen dürfen keine "…" stehen. */
+const sicher = (s) => s.replace(/"/g, '’').replace(/[[\]]/g, '');
+
+const ohneKarte = fertigeEssays.filter(
+  (e) => !argumentListe.some((a) => a.slug === e.slug)
+);
+
+if (ohneKarte.length > 0) {
+  console.log('\n── Argument-Karten ──────────────────────────────────────\n');
+  for (const e of ohneKarte) console.log(`  ○ ohne Karte   ${e.titel}`);
+  console.log('\n  Eine Karte zeigt die Argumentation als Baum — auf');
+  console.log('  /argumente/ und als Textfassung für Suche und Screenreader.');
+
+  const jetztArg = await frage('\nArgument-Karte anlegen? [j/N] ');
+
+  if (jetztArg.trim().toLowerCase() === 'j') {
+    for (const e of ohneKarte) {
+      const machen = (await frage(`\n  „${e.titel}" — Karte anlegen? [j/N] `)).trim().toLowerCase();
+      if (machen !== 'j') continue;
+
+      const knoten = []; // { id, text }
+      const sammle = async (praefix, label, hinweis) => {
+        console.log(`\n    ${label} ${hinweis}`);
+        for (let i = 1; ; i++) {
+          const id = `${praefix}${praefix === 'T' || praefix === 'S' ? '' : i}`;
+          const eingabe = (await frage(`      ${id}: `)).trim();
+          if (!eingabe) break;
+          knoten.push({ id, text: eingabe });
+          if (praefix === 'T' || praefix === 'S') break;
+        }
+      };
+
+      await sammle('T', 'These', '— worauf der Essay hinauswill (Enter = keine)');
+      await sammle('A', 'Ausgangspunkte', '— Fall, Norm, Fundstelle (leer = fertig)');
+      await sammle('P', 'Schritte', '— die Gedankenschritte (leer = fertig)');
+      await sammle('E', 'Einwände', '— was dagegen spricht (leer = keine)');
+      await sammle('S', 'Schluss', '— wohin es führt (Enter = keiner)');
+
+      if (knoten.length < 2) {
+        console.log('    ⚠ Zu wenig für eine Karte — übersprungen.');
+        continue;
+      }
+
+      console.log('\n    Knoten:');
+      for (const k of knoten) console.log(`      ${k.id}  ${k.text.slice(0, 60)}`);
+      console.log('\n    Kanten: „A>B" stützt, „A~B" ist ein Einwand.');
+      console.log('    Mehrere mit Leerzeichen, z. B.:  T>A1 T>A2 A1>P1 P1>S E1~S');
+
+      const ids = new Set(knoten.map((k) => k.id));
+      let kanten = [];
+      while (true) {
+        const roh = (await frage('      Kanten: ')).trim();
+        if (!roh) {
+          console.log('    ⚠ Ohne Kanten keine Karte — übersprungen.');
+          break;
+        }
+        const teile = roh.split(/\s+/);
+        const schlecht = teile.filter((t) => {
+          const m = t.match(/^(\w+)([>~])(\w+)$/);
+          return !m || !ids.has(m[1]) || !ids.has(m[3]);
+        });
+        if (schlecht.length) {
+          console.log(`    ⚠ Unbekannt oder falsch geschrieben: ${schlecht.join(', ')}`);
+          continue;
+        }
+        kanten = teile.map((t) => {
+          const m = t.match(/^(\w+)([>~])(\w+)$/);
+          return { von: m[1], art: m[2], nach: m[3] };
+        });
+        break;
+      }
+      if (!kanten.length) continue;
+
+      const diagramm =
+        'flowchart TD\n' +
+        knoten.map((k) => `  ${k.id}["${umbreche(sicher(k.text))}"]`).join('\n\n') +
+        '\n\n' +
+        kanten.map((k) => `  ${k.von} ${k.art === '~' ? '-.->' : '-->'} ${k.nach}`).join('\n');
+
+      console.log('\n' + diagramm.split('\n').map((z) => '    ' + z).join('\n') + '\n');
+      const passtArg = (await frage('    So anlegen? [J/n] ')).trim().toLowerCase();
+      if (passtArg === 'n') {
+        console.log('    ○ Verworfen.');
+        continue;
+      }
+
+      // In die Obsidian-Notiz schreiben — vor den Werkstattblock, sonst ans Ende.
+      const pfad = join(e.vault, e.datei);
+      const roh = readFileSync(pfad, 'utf-8');
+      const block = `\n## Argument\n\n\`\`\`mermaid\n${diagramm}\n\`\`\`\n`;
+      const wp = roh.indexOf('\n%%');
+      const neu = wp === -1 ? roh.replace(/\s*$/, '\n') + block : roh.slice(0, wp) + '\n' + block + roh.slice(wp);
+      writeFileSync(pfad, neu, 'utf-8');
+      vaultGeaendert = true;
+
+      const { daten } = parseFrontmatter(roh);
+      argumentListe.push({
+        slug: e.slug,
+        titel: e.titel,
+        diagramm,
+        datum: daten.date || new Date().toISOString().split('T')[0],
+      });
+      console.log(`    ✓ In die Notiz geschrieben und für /argumente/ vorgemerkt.`);
+    }
+
+    // argumente.js im selben Lauf neu erzeugen
+    if (argumentListe.length > 0) {
+      const zielArg = join(__dir, 'src/data/argumente.js');
+      const inhaltArg = genArgumente(argumentListe);
+      const schon = kandidaten.find((k) => k.ziel === zielArg);
+      if (schon) {
+        schon.inhalt = inhaltArg;
+      } else if (!(existsSync(zielArg) && readFileSync(zielArg, 'utf-8') === inhaltArg)) {
+        kandidaten.push({
+          art: existsSync(zielArg) ? 'aktualisiert' : 'neu',
+          label: 'Argumente (aus Essays)',
+          ziel: zielArg,
+          inhalt: inhaltArg,
+          url: 'https://www.annotanda.com/argumente/',
+          seite: true,
+          name: 'Argumente',
+        });
+      }
+    }
+  }
+}
+
 if (kandidaten.length === 0) {
   rl.close();
   console.log('\nNichts zu veröffentlichen — keine fertigen, geänderten Essays');

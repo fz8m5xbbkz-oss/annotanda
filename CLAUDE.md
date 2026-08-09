@@ -25,7 +25,7 @@ liest er sie automatisch und ist sofort auf Stand. Bitte vor jeder substantielle
 | | |
 |---|---|
 | **Live-URL** | https://www.annotanda.com |
-| **GitHub-Repo** | https://github.com/fz8m5xbbkz-oss/notitia — **heißt auf GitHub noch `notitia`**, nur das Projekt wurde umbenannt. Remote also `git@github.com:fz8m5xbbkz-oss/notitia.git` (geprüft 26.07.2026). |
+| **GitHub-Repo** | https://github.com/fz8m5xbbkz-oss/annotanda — am 09.08.2026 von `notitia` umbenannt. Remote: `git@github.com:fz8m5xbbkz-oss/annotanda.git` |
 | **Substack** | https://luisfzl.substack.com |
 | **Bluesky** | https://bsky.app/profile/luis-57.bsky.social |
 | **Kontakt-Mail** | luisfrenzel@gmx.net (öffentlich, auf /ueber) |
@@ -155,7 +155,7 @@ astro.config.mjs                 site-URL + trailingSlash: always + Sitemap
    einmal nach, committet (Hook pusht, Vercel deployt).
    Alias `annotanda` (in ~/.zshrc) geht von überall.
 
-**Zwei Abfragen vor dem Bestätigungsschritt**, beide über *alle* fertigen
+**Drei Abfragen vor dem Bestätigungsschritt**, beide über *alle* fertigen
 Texte (nicht nur die geänderten — beides wird typischerweise nachgereicht):
 
 1. **Cross-Post-Links** — fragt pro Text nach fehlender Substack-/Steady-URL,
@@ -167,6 +167,14 @@ Texte (nicht nur die geänderten — beides wird typischerweise nachgereicht):
    ein Eintrag, beliebig viele Texte). Geschrieben wird in die Vault-Notiz
    `annotanda Seiten/Quellen.md`; `src/data/quellen.js` wird im selben Lauf
    neu erzeugt, damit nichts zweimal laufen muss.
+
+3. **Argument-Karte** — bietet für jeden fertigen Essay ohne ```mermaid-Block
+   an, eine anzulegen. Abgefragt werden These, Ausgangspunkte, Schritte,
+   Einwände und Schluss (leere Eingabe beendet die Gruppe), danach die Kanten
+   in Kurzform: `T>A1` stützt, `E1~S` ist ein Einwand. Knoten-IDs, `<br>`-
+   Umbrüche bei 46 Zeichen und die Mermaid-Syntax entstehen daraus; der Block
+   wird in die Obsidian-Notiz geschrieben und `argumente.js` im selben Lauf
+   neu erzeugt. Vor dem Schreiben wird das fertige Diagramm gezeigt.
 
 **Interne Verweise** entstehen auf zwei Wegen: `[[Titel]]` (ausdrücklich,
 wirkt überall) und ein Essay-Titel 1:1 im Fließtext (automatisch). Der
