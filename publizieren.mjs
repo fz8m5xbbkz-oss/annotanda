@@ -1077,12 +1077,24 @@ if (quellenDatei && alleTexte.length > 0) {
         const notiz = (await frage('    Notiz, z. B. Fundstelle (Enter = keine): ')).trim();
 
         const zeile = baueQuellenzeile({ autor, titel, jahr, url, notiz, slug: t.slug });
+
+        // Vor dem Schreiben zeigen, was entsteht. Wer eine fertige Quellenliste
+        // in die Abfrage einfügt, verteilt seine Zeilen sonst still über Titel,
+        // Autor, Jahr, URL und Notiz — und merkt es erst auf der Website.
+        console.log(`\n    ${zeile.replace(/^- /, '')}\n`);
+        const passt = (await frage('    So eintragen? [J/n] ')).trim().toLowerCase();
+        if (passt === 'n') {
+          console.log('    ○ Verworfen.');
+          weiter = (await frage('    Noch eine? [j/N] ')).trim().toLowerCase();
+          continue;
+        }
+
         const neu = fuegeQuellenzeileEin(body, rubrik.ueberschrift, zeile);
         if (!neu) {
           console.log(`    ⚠ Rubrik „## ${rubrik.ueberschrift}" fehlt in Quellen.md — Eintrag verworfen.`);
         } else {
           body = neu;
-          console.log(`    ✓ ${zeile.replace(/^- /, '')}`);
+          console.log('    ✓ eingetragen.');
         }
 
         weiter = (await frage('    Noch eine? [j/N] ')).trim().toLowerCase();
