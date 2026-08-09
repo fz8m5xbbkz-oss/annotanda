@@ -68,8 +68,27 @@ export const quellen = [
     "essays": [
       "der-verteidiger-im-eigenen-staat"
     ],
-    "notiz": "in: Nach Auschwitz. Essays & Kommentare 1, Tiamat, Berlin 1989 (Ausgabe vor Zitieren prüfen): [Gregor Gysi, Ein Leben ist zu wenig. Die Autobiographie, aufgezeichnet von Hans-Dieter Schütt, Aufbau Verlag 2017 (Taschenbuch: Aufbau 2019, ISBN 978-3-7466-3520-0), S. 102, 131, 174](Strafgesetzbuch der DDR vom 12. Januar 1968, GBl. DDR Teil I, Nr. 1, S. 1 (Art. 4, § 244)) (Verordnung über die Bildung von Kollegien der Rechtsanwälte vom 15. Mai 1953, GBl. DDR 1953, S. 725) — npm run publish",
-    "titel": "Hannah Arendt, Persönliche Verantwortung in der Diktatur, Vortrag 1964",
+    "notiz": "vom 15. Mai 1953, GBl. DDR 1953, S. 725; die Norm, die den freien Anwalt in der DDR durch das Kollegium ersetzte",
+    "jahr": 1953,
+    "titel": "Verordnung über die Bildung von Kollegien der Rechtsanwälte",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
+      "der-verteidiger-im-eigenen-staat"
+    ],
+    "notiz": "vom 12. Januar 1968, GBl. DDR Teil I Nr. 1, S. 1; im Essay Art. 4 und § 244",
+    "jahr": 1968,
+    "titel": "Strafgesetzbuch der DDR",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
+      "der-verteidiger-im-eigenen-staat"
+    ],
+    "notiz": "Verantwortung für die Rechtmäßigkeit](https://www.gesetze-im-internet.de/beamtstg/__36.html) — die Remonstrationspflicht als heutiges Gegenstück",
+    "autor": "Beamtenstatusgesetz",
+    "titel": "[§ 36 BeamtStG",
     "typ": "primaertext"
   },
   {
@@ -197,6 +216,26 @@ export const quellen = [
   },
   {
     "essays": [
+      "der-verteidiger-im-eigenen-staat"
+    ],
+    "notiz": "aufgezeichnet von Hans-Dieter Schütt; Aufbau Verlag, Taschenbuchausgabe 2019, ISBN 978-3-7466-3520-0; im Essay S. 102, 131 und 174",
+    "jahr": 2017,
+    "autor": "Gysi, Gregor",
+    "titel": "Ein Leben ist zu wenig. Die Autobiographie",
+    "typ": "buch"
+  },
+  {
+    "essays": [
+      "der-verteidiger-im-eigenen-staat"
+    ],
+    "notiz": "Vortrag; in: Nach Auschwitz. Essays & Kommentare 1, Edition Tiamat, Berlin 1989",
+    "jahr": 1964,
+    "autor": "Arendt, Hannah",
+    "titel": "Persönliche Verantwortung in der Diktatur",
+    "typ": "buch"
+  },
+  {
+    "essays": [
       "dafuer-bin-ich-nicht-zustaendig"
     ],
     "notiz": "Hannah Arendts Konzept der „Herrschaft des Niemand\", im Essay wörtlich zitiert",
@@ -224,6 +263,33 @@ export const quellen = [
     "autor": "Searle, John R.",
     "titel": "A Taxonomy of Illocutionary Acts",
     "typ": "aufsatz"
+  },
+  {
+    "essays": [
+      "der-verteidiger-im-eigenen-staat"
+    ],
+    "notiz": "Biografie (LeMO)](https://www.hdg.de/lemo/biografie/rudolf-bahro.html) — Lebenslauf und Verfahren, Grundlage der Falldarstellung",
+    "autor": "Haus der Geschichte",
+    "titel": "[Rudolf Bahro",
+    "typ": "aufsatz"
+  },
+  {
+    "essays": [
+      "der-verteidiger-im-eigenen-staat"
+    ],
+    "notiz": "Begleittext zur Quelle",
+    "autor": "Stasi-Mediathek",
+    "titel": "Plädoyer von Gregor Gysi im Prozess gegen Rudolf Bahro",
+    "url": "https://www.stasi-mediathek.de/medien/plaedoyer-von-gregor-gysi-im-prozess-gegen-rudolf-bahro/",
+    "typ": "aufsatz"
+  },
+  {
+    "essays": [
+      "der-verteidiger-im-eigenen-staat"
+    ],
+    "notiz": "Texte und Dokumente](https://www.ddr89.de/texte/bahro.html) — Materialsammlung zum Verfahren",
+    "titel": "[Rudolf Bahro",
+    "typ": "online"
   }
 ];
 
