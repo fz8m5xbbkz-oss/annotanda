@@ -1,0 +1,32 @@
+---
+title: "Der Verteidiger im eigenen Staat"
+date: 2026-08-09
+substack_url: "https://luisfzl.substack.com/p/der-verteidiger-im-eigenen-staat?r=6fibu5&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
+steady_url: "https://steady.page/de/annotanda/posts/b20e3a0e-5b5a-4da7-9178-d0165c97c0f3?utm_campaign=steady_sharing_button"
+---
+
+Eigentlich sollte der Rechtsanwalt und Politiker Gregor Gysi Schauspieler werden. So wollten es nach eigenen Aussagen seine Eltern. Doch so kam es nicht. Er wurde Rechtsanwalt und Politiker.
+
+Doch in einem Gespräch mit Barbara Wolff, deren Ehemann Jura studiert hatte, beschrieb sie das Studium als „ein Studium für Doofe". Gysi „imponierte diese Charakterisierung", da er sich beim Studium nicht überanstrengen müsse (Gysi, S. 102).
+
+Zu Beginn dieses Studiums galt der Beruf des Rechtsanwalts noch als aussterbende Tätigkeit. Gysi war schnell klar, dass er dennoch diesen Berufsweg einschlagen wollte. Auch weil man im Beruf des Rechtsanwaltes „Strafanträge zu stellen gehabt hätte", welche nicht mit seinen Auffassungen übereinstimmten (Gysi, S. 131). Gysi wurde die Arbeit als Justitar in einem volkseigenen Betrieb und als Notar angeboten. Beides lehnte er ab, und das Justizministerium und Gysi fanden einen Kompromiss: Gysi müsse eine Ausbildung als Richterassistent absolvieren. Danach könne er, als Praktikant, in das Berliner Rechtsanwaltskollegium kommen, wo er anschließend eine Ausbildung zum Rechtsanwalt machen würde. Er nahm dieses Angebot an.
+
+Gysis erster großer Fall war der Prozess gegen Rudolf Bahro. Dieser war SED-Mitglied und Wirtschaftsfunktionär und hatte heimlich „Die Alternative" verfasst. Eine schonungslose Abrechnung mit den diktatorischen Strukturen im Staatssozialismus. Er selbst war Sozialist.
+
+Er übermittelte sein Manuskript in den Westen und wurde demnach wegen Übermittlung von Nachrichten und Geheimnisverrat angeklagt (§§ 98, 245 StGB-DDR).
+
+Während des Prozesses war der Gerichtssaal abgeschottet und man kam nur mit einem Ticket rein. Der Strafbestand des Landesverrats verlangte formal, dass die Information direkt an den Klassenfeind gegangen sein müsste. Doch Gysi konnte nachweisen, dass Bahro nur öffentlich zugängliche Quellen und Gespräche mit Wirtschaftsfunktionären verarbeitet hatte. Es gab also keine geheimen Informationen, die preisgegeben wurden. Auch das Manuskript war formal an einen Gewerkschaftsverlag gegangen, nicht an eine feindliche Stelle. Demnach verlangte Gysi in diesem Punkt Freispruch.
+
+Doch der Prozess wurde vor Beginn mit Mielke und Honecker abgestimmt. Strafmaß und Urteil standen vorher fest. Die von Gysi angesprochene Verrechtlichung des Lebens in der DDR hörte dort auf, „wo es um wirkliche oder vermeintliche politische Machtfragen ging" (Gysi, S. 174). Laut Gysi sollte an Bahro ein Exempel statuiert werden. Denn für den wirtschaftlichen, staatsentscheidenden Bereich würde Kritik nicht gestattet werden. Bahro wurde zu 8 Jahren Haft verurteilt.
+
+Das Urteil war vorher gefallen. Half Gysi damit dem System, Verteidigung zu beglaubigen?
+
+Die Verordnung über die Bildung von Kollegien der Rechtsanwälte vom 15.05.1953 strukturierte die Rechtsanwaltschaft der DDR wie folgt: Die Kollegien in Ostberlin und den 14 Bezirksstädten wurden durch das Justizministerium kontrolliert, welches in Abstimmung mit der SED-Bezirksleitung zusammenarbeitete. Einzelzulassungen gab es nur etwa 20 landesweit. Die Möglichkeit, als Rechtsanwältin oder Rechtsanwalt außerhalb eines Kollegiums zu arbeiten, gab es damit kaum — die wenigen Einzelanwältinnen und -anwälte wurden nur zugelassen, wo es im Interesse von SED und MfS lag. Die Zulassungen waren vorgefiltert.
+
+Laut Artikel 4 des Strafgesetzbuches der DDR ist das Recht auf Verteidigung gewährleistet. § 244 des Strafgesetzbuches besagt, dass Rechtsbeugung Richter, Staatsanwälte und Mitarbeiter eines Untersuchungsorgans erfasst, den Verteidiger aber nicht, denn er trägt keine Verantwortung für das Ergebnis. Das liegt auch daran, dass die Verteidigung vom Träger des Rechtes ausgewählt und kontrolliert wird. Selbst als Gysi Bahro juristisch sauber verteidigte, spielte das für das Urteil keine Rolle, da diese Verteidigung ausschließlich symbolische Bedeutung hatte. Ein gewährleistetes Recht auf Verteidigung ist also wertlos, wenn es vom gleichen Gesetzgeber eingeschränkt wird. Gysi half also einerseits seinem Mandanten, zeigte aber gleichzeitig, dass es Verteidigung im Rechtssystem der DDR gab. Waren die Rechtsanwältinnen und Rechtsanwälte der DDR damit gehorsam?
+
+Laut Hannah Arendt gibt es zwischen Gehorsam und Unterstützung im politischen Raum keinen Unterschied (Arendt, _Persönliche Verantwortung in der Diktatur_, 1964). Denn eine erwachsene Person, die einer Organisation gehorche, täte dies nicht wie ein Kind, sondern wie eine Unterstützerin oder ein Unterstützer. Man würde den Apparat mittragen, in Gang halten und zur Funktion des Apparats beitragen. Gleichzeitig würde man die Bereitschaft mitbringen, das System als Übel hinzunehmen und sich daran zu gewöhnen. Das Wirken innerhalb der Institution verhindert Schlimmeres nicht — es hält sie funktionsfähig und macht die Bleibenden zu Mitwirkenden.
+
+Doch Verteidigerinnen und Verteidiger arbeiten dem Verfahren entgegen, nicht wie Verwaltungsbeamtinnen und -beamte, die das System aktiv stützen. Dennoch schaffen sie durch ihr Mitwirken eine Glaubhaftigkeit der gerechten Gerichtsverhandlung. Damit bekommt das Rechtssystem Legitimität. Das System wird trotzdem durch Glaubhaftigkeit gestützt. In der DDR waren Rechtsanwältinnen und Rechtsanwälte ein eben solcher Beweis für funktionierende Gerichtsverhandlungen und ein gerechtes Rechtssystem — obwohl im Fall von Bahro das Gegenteil der Fall war. Die Schwelle liegt dort, wo Mitarbeit der Institution Handlungsfähigkeit gerade dort verschafft, wo sie Unrecht tut.
+
+Heute schreibt § 36 BeamtStG vor: Beamtinnen und Beamte tragen für die Rechtmäßigkeit ihrer Handlungen selbst die volle Verantwortung. Bei Bedenken gegen die Rechtmäßigkeit einer dienstlichen Anordnung sollen die Bedenken geltend gemacht werden. Wenn die Vorgesetzte oder der Vorgesetzte und die nächsthöhere Stelle die Handlung bestätigen, muss ausgeführt werden — außer die Handlung ist erkennbar strafbar oder ordnungswidrig oder verletzt die Menschenwürde. Erst dann entfällt die Pflicht. Es ist der Versuch, Arendts Ethik in das Beamtentum einzubauen. Beamtinnen und Beamte tragen aktiv Verantwortung und können sich nicht hinter dem Apparat verstecken.

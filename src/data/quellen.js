@@ -66,6 +66,14 @@ export const quellen = [
   },
   {
     "essays": [
+      "der-verteidiger-im-eigenen-staat"
+    ],
+    "notiz": "in: Nach Auschwitz. Essays & Kommentare 1, Tiamat, Berlin 1989 (Ausgabe vor Zitieren prüfen): [Gregor Gysi, Ein Leben ist zu wenig. Die Autobiographie, aufgezeichnet von Hans-Dieter Schütt, Aufbau Verlag 2017 (Taschenbuch: Aufbau 2019, ISBN 978-3-7466-3520-0), S. 102, 131, 174](Strafgesetzbuch der DDR vom 12. Januar 1968, GBl. DDR Teil I, Nr. 1, S. 1 (Art. 4, § 244)) (Verordnung über die Bildung von Kollegien der Rechtsanwälte vom 15. Mai 1953, GBl. DDR 1953, S. 725) — npm run publish",
+    "titel": "Hannah Arendt, Persönliche Verantwortung in der Diktatur, Vortrag 1964",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
       "dafuer-bin-ich-nicht-zustaendig"
     ],
     "notiz": "prägt den Begriff der „Herrschaft des Niemand\" (dt. Piper 1970), im Essay referenziert, nicht wörtlich zitiert",
