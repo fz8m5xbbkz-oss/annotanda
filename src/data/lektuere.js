@@ -15,7 +15,18 @@ export const aktuell = [
   }
 ];
 
-export const geplant = [];
+export const geplant = [
+  {
+    "jahr": 1942,
+    "autor": "Camus, Albert",
+    "titel": "Der Mythos des Sisyphos"
+  },
+  {
+    "jahr": 2013,
+    "autor": "Piketty, Thomas",
+    "titel": "Das Kapital im 21. Jahrhundert"
+  }
+];
 
 export const abgeschlossen = [];
 

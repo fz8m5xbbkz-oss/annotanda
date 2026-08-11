@@ -1,6 +1,6 @@
 # Über
 
-**annotanda** ist mein Versuch, Verwaltung und Philosophie zusammenzudenken — und dort, wo der Staat zur Machtfrage wird, auch die Politik. Was sagt Aristoteles über Bürokratie? Was lehrt der Staat über Freiheit? 
+**annotanda** ist mein Versuch, Verwaltung, Politik und Philosophie zusammenzudenken. Was sagt Aristoteles über Bürokratie? Was lehrt der Staat über Freiheit? 
 
 Jeden Sonntag erscheint ein Essay. Ein Gedanke, der mich wirklich beschäftigt hat — zu Ende gedacht. 
 Hinzu kommen Buch-Resümees und informierende Texte.
