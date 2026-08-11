@@ -1,6 +1,7 @@
 ---
 title: "Der Verteidiger im eigenen Staat"
 date: 2026-08-09
+teaser: "Gysi verteidigte Bahro juristisch sauber — das Urteil stand vorher fest. Wer im Unrechtssystem verteidigt, hilft dem Mandanten und beglaubigt das System."
 substack_url: "https://luisfzl.substack.com/p/der-verteidiger-im-eigenen-staat?r=6fibu5&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
 steady_url: "https://steady.page/de/annotanda/posts/b20e3a0e-5b5a-4da7-9178-d0165c97c0f3?utm_campaign=steady_sharing_button"
 ---

@@ -1,6 +1,7 @@
 ---
 title: "Dafür bin ich nicht zuständig"
 date: 2026-07-12
+teaser: "Der meistgehasste Behördensatz ist wörtlich Platons Gerechtigkeitsformel. Doch Ordnung und Gerechtigkeit sind nicht dasselbe — Arendt und Elbe halten dagegen."
 substack_url: "https://luisfzl.substack.com/p/dafur-bin-ich-nicht-zustandig"
 steady_url: "https://steady.page/de/annotanda/posts/4ad7c3ab-6199-41dd-8164-8f2c668b8924?utm_campaign=steady_sharing_button"
 ---
@@ -9,7 +10,7 @@ Während man den Gang entlang in Richtung Rezeption geht, hört man noch die Tü
 
 Denn Platon sagt an der Stelle 433a in Buch IV: „…dass jeder Einzelne das eine für den Staat tun müsse, wozu seine Natur am geschicktesten wäre […] das Seinige tun und sich nicht um vielerlei bekümmern, das ist die Gerechtigkeit." Gerechtigkeit hat für ihn nichts mit Gefühlen zu tun — es ist ein System, in welchem der Handwerker fertigt und die Verwalterin verwaltet. Keine Gruppe greift dabei in die Aufgaben der anderen. Das ist Platons Verständnis der Gerechtigkeit in der Polis.
 
-Doch sein Begriff der Gerechtigkeit greift tiefer und thematisiert die Seele des Individuums. Diese erbringt drei Leistungen: Die Vernunftseele lässt uns das Rechte erkennen, die Triebseele lässt uns begehren, bedarf aber der Klugheit, um nicht maßlos zu werden, und die Mutseele gibt uns die innere Kraft, das Erkannte auch zu tun.
+Doch sein Begriff der Gerechtigkeit greift tiefer und thematisiert die Seele des Individuums. Diese erbringt drei Leistungen: Die Vernunftseele lässt uns das Rechte erkennen, die Triebseele lässt uns begehren, bedarf aber der Besonnenheit, um nicht maßlos zu werden, und die Mutseele gibt uns die innere Kraft, das Erkannte auch zu tun.
 
 Wenn jeder dieser Seelenteile nun das Seine tut, so bleibt die strukturelle Einheit der Seele gewahrt und es herrscht Gerechtigkeit.
 

@@ -1,6 +1,7 @@
 ---
 title: "Der Paragraphen-Automat und die Maxime"
 date: 2026-07-19
+teaser: "Das Bild vom Paragraphenautomaten beschreibt die Verwaltung nicht. Wo das Gesetz die Entscheidung nicht abnimmt, handelt ein Mensch — ob gewollt oder nicht: kantisch."
 substack_url: "https://luisfzl.substack.com/p/der-paragraphen-automat-und-die-maxime"
 steady_url: "https://steady.page/de/annotanda/posts/0670b3da-b21a-4ddd-83fd-f6ad0ec14934?utm_campaign=steady_sharing_button"
 ---

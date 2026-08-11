@@ -1,6 +1,7 @@
 ---
 title: "Der Antrag gilt als genehmigt"
 date: 2026-08-02
+teaser: "Nach Fristablauf gilt ein Antrag als genehmigt, ohne dass jemand Ja gesagt hat. Ein Sprechakt ohne Sprecher: § 42a VwVfG trifft auf John Searle."
 substack_url: "https://open.substack.com/pub/luisfzl/p/der-antrag-gilt-als-genehmigt?r=6fibu5&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
 steady_url: "https://steady.page/de/annotanda/posts/5a544844-78bf-442a-810e-0b4e9171e1c9"
 ---

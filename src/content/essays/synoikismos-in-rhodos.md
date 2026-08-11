@@ -1,6 +1,7 @@
 ---
 title: "Synoikismos in Rhodos"
 date: 2026-06-20
+teaser: "408 v. Chr. verschmelzen drei Städte auf Rhodos zu einer Polis. Aristoteles warnt: Mehr Einheit kann die Stadt selbst kosten. Sachsens Kreisreform 2008."
 substack_url: "https://luisfzl.substack.com/p/synoikismos-in-rhodos"
 steady_url: "https://steady.page/de/annotanda/posts/cc38aecf-2458-4cb8-8d35-9783414edd5f?utm_campaign=steady_sharing_button"
 bild: "/bilder/kamiros.jpg"
