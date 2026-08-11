@@ -18,11 +18,13 @@ export type Knoten = {
   /** Ziele der durchgezogenen Kanten — was dieser Schritt stützt */
   stuetzt: string[];
   /**
-   * Ziele der gestrichelten Kanten. Bewusst neutral benannt: in den Notizen
-   * zeigt die gestrichelte Kante mal vom Schritt auf den Einwand
-   * (`P5 -.-> E1`), mal vom Einwand auf den Schluss (`E1 -.-> S`). Die Kante
-   * markiert also „hier ist etwas strittig", nicht eine feste Richtung — die
-   * Textfassung formuliert deshalb „Einwand: Nr. X" statt „Einwand gegen".
+   * Ziele der gestrichelten Kanten — das, wogegen sich dieser Knoten wendet.
+   *
+   * Konvention seit 09.08.2026: **Der Einwand ist immer die Quelle** der
+   * gestrichelten Kante (`E1 -.-> P5`, `E1 -.-> S`). Bis dahin zeigte sie im
+   * selben Diagramm in zwei Rollen, weshalb die Textfassung nur unbestimmt
+   * „Einwand: Nr. X" schreiben konnte; jetzt darf sie „Einwand gegen" sagen.
+   * Neue Diagramme bitte in dieser Richtung anlegen.
    */
   einwand: string[];
 };

@@ -52,7 +52,7 @@ const verweis = (ids: string[]) =>
             <span class="k-kante">stützt {verweis(k.stuetzt)}</span>
           )}
           {k.einwand.length > 0 && (
-            <span class="k-kante einwand">Einwand: {verweis(k.einwand)}</span>
+            <span class="k-kante einwand">Einwand gegen {verweis(k.einwand)}</span>
           )}
         </li>
       ))}
