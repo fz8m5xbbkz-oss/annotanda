@@ -1,6 +1,7 @@
 ---
 title: "Der Staat, der sein Verwaltungsrecht abschaffte"
 date: 2026-08-16
+teaser: "Dass man den Staat verklagen kann, ist keine Selbstverständlichkeit. Die DDR schaffte das Verwaltungsrecht ab — folgerichtig, aus einer Prämisse von Rousseau."
 substack_url: "https://luisfzl.substack.com/p/der-staat-der-sein-verwaltungsrecht?r=6fibu5&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
 steady_url: "https://steady.page/de/annotanda/posts/8f9e77fc-4683-4dc1-be74-49de2a76bc2f?utm_campaign=steady_sharing_button"
 ---
@@ -20,24 +21,3 @@ Wer den Willen des Volkes und den Beschluss des Volkes gleichsetzt, braucht kein
 Heutzutage ist das Verwaltungsrecht als Recht der Über- und Unterordnung gegliedert. Der Verwaltungsakt gilt als einseitige Regelung (§ 35 VwVfG). Die Kontrollarchitektur darüber umfasst Widerspruch, § 40 VwGO und Art. 19 Abs. 4 GG. Selbst unser Grundgesetz misstraut dem Staat als Institution und ist auf ständige Prüfung ausgelegt.
 
 Herr Müller hat die Möglichkeit zu klagen. Das Verwaltungsrecht schließt eine Lücke, die der Staat selbst in sich trägt, und schafft dem Bürger die Möglichkeit, dem Staat auf rechtlicher Ebene entgegenzutreten. Es ist kein Teil privilegierter Demokratien und auch keine Selbstverständlichkeit. Es ist eine bewusste Konstruktion gegen eine Lücke, die im Gesellschaftsvertrag selbst angelegt ist.
-
----
-
-
-### Gerüst (Vorschlag, keine Prosa)
-
-1. **Hook:** Eine heutige Selbstverständlichkeit — man kann gegen den Staat klagen. Wie
-   selbstverständlich ist das?
-2. **Der Fall:** 1952/1958 — ein Staat schafft die Kontrolle seiner Verwaltung ab.
-3. **Die These, stark gemacht:** Warum das aus der eigenen Prämisse folgerichtig war.
-4. **Das Werkzeug:** Rousseaus Gemeinwille als saubere Fassung dieser Prämisse.
-5. **Der Bruch:** Die Prämisse ist nicht falsch, sie ist unüberprüfbar — und genau
-   Unüberprüfbarkeit ist das, wogegen Verfahren erfunden wurden.
-6. **Offene Frage:** Verwaltungsrecht unterstellt, dass der Staat sich irren kann. Was
-   folgt daraus für den, der ihn ab morgen vertritt?
-
-## [Der Fall]
-
-## [Die These, so stark wie möglich]
-
-## [Der Bruch]

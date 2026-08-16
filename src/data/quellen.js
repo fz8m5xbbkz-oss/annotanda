@@ -95,7 +95,46 @@ export const quellen = [
     "essays": [
       "der-staat-der-sein-verwaltungsrecht-abschaffte"
     ],
-    "titel": "Jean-Jacques Rousseau, Du contrat social (1762), dt. Übersetzung H. Denhardt, Leipzig 1880",
+    "notiz": "dt. Übersetzung H. Denhardt, Leipzig 1880; der allgemeine Wille verliert im Einzelfall seine Natur, im Essay wörtlich zitiert",
+    "jahr": 1762,
+    "autor": "Rousseau, Jean-Jacques",
+    "titel": "Du contrat social",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
+      "der-staat-der-sein-verwaltungsrecht-abschaffte"
+    ],
+    "notiz": "vom 23. Juli 1952, GBl. DDR 1952, S. 613; mit der Überleitung auf die Bezirke fallen die Verwaltungsgerichte weg",
+    "jahr": 1952,
+    "titel": "Gesetz über die weitere Demokratisierung des Aufbaus und der Arbeitsweise der staatlichen Organe in den Ländern der Deutschen Demokratischen Republik",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
+      "der-staat-der-sein-verwaltungsrecht-abschaffte"
+    ],
+    "notiz": "Begriff des Verwaltungsakts](https://www.gesetze-im-internet.de/vwvfg/__35.html) — der Verwaltungsakt als einseitige Regelung",
+    "autor": "Verwaltungsverfahrensgesetz",
+    "titel": "[§ 35 VwVfG",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
+      "der-staat-der-sein-verwaltungsrecht-abschaffte"
+    ],
+    "notiz": "Rechtsweg](https://www.gesetze-im-internet.de/vwgo/__40.html) — Teil der Kontrollarchitektur über der Verwaltung",
+    "autor": "Verwaltungsgerichtsordnung",
+    "titel": "[§ 40 VwGO",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
+      "der-staat-der-sein-verwaltungsrecht-abschaffte"
+    ],
+    "notiz": "Rechtsschutzgarantie](https://www.gesetze-im-internet.de/gg/art_19.html) — wer durch die öffentliche Gewalt verletzt wird, dem steht der Rechtsweg offen",
+    "autor": "Grundgesetz",
+    "titel": "[Art. 19 Abs. 4 GG",
     "typ": "primaertext"
   },
   {
@@ -288,6 +327,16 @@ export const quellen = [
     "autor": "Stasi-Mediathek",
     "titel": "Plädoyer von Gregor Gysi im Prozess gegen Rudolf Bahro",
     "url": "https://www.stasi-mediathek.de/medien/plaedoyer-von-gregor-gysi-im-prozess-gegen-rudolf-bahro/",
+    "typ": "aufsatz"
+  },
+  {
+    "essays": [
+      "der-staat-der-sein-verwaltungsrecht-abschaffte"
+    ],
+    "notiz": "Referat auf der Babelsberger Konferenz am 2./3. April 1958, in: Neue Justiz 12 (1958), Heft 7; im Essay referiert",
+    "jahr": 1958,
+    "autor": "Ulbricht, Walter",
+    "titel": "Die Staatslehre des Marxismus-Leninismus und ihre Anwendung in Deutschland",
     "typ": "aufsatz"
   },
   {
