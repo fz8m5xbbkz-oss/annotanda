@@ -93,6 +93,13 @@ export const quellen = [
   },
   {
     "essays": [
+      "der-staat-der-sein-verwaltungsrecht-abschaffte"
+    ],
+    "titel": "Jean-Jacques Rousseau, Du contrat social (1762), dt. Übersetzung H. Denhardt, Leipzig 1880",
+    "typ": "primaertext"
+  },
+  {
+    "essays": [
       "dafuer-bin-ich-nicht-zustaendig"
     ],
     "notiz": "prägt den Begriff der „Herrschaft des Niemand\" (dt. Piper 1970), im Essay referenziert, nicht wörtlich zitiert",
