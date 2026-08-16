@@ -195,7 +195,7 @@ export const quellen = [
     "essays": [
       "frei-im-paragraphen"
     ],
-    "notiz": "Torte-vs-Pfirsich-Beispiel und die Passagen zum freien Handeln, im Essay mehrfach wörtlich zitiert",
+    "notiz": "Kap. 6 (Der freie Wille): Torte-vs-Pfirsich-Beispiel und die Passagen zum freien Handeln, im Essay mehrfach wörtlich zitiert",
     "jahr": 1987,
     "autor": "Nagel, Thomas",
     "titel": "Was bedeutet das alles? Eine ganz kurze Einführung in die Philosophie",
@@ -295,7 +295,7 @@ export const quellen = [
     "essays": [
       "frei-im-paragraphen"
     ],
-    "notiz": "Brain 106; das Bereitschaftspotential-Experiment samt Veto, im Essay referiert",
+    "notiz": "Brain 106 (1983), Heft 3, S. 623–642; das Bereitschaftspotential-Experiment, im Essay referiert",
     "jahr": 1983,
     "autor": "Libet, Benjamin u. a.",
     "titel": "Time of conscious intention to act in relation to onset of cerebral activity (readiness-potential)",
