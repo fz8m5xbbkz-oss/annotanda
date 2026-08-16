@@ -95,10 +95,11 @@ export const quellen = [
     "essays": [
       "der-staat-der-sein-verwaltungsrecht-abschaffte"
     ],
-    "notiz": "dt. Übersetzung H. Denhardt, Leipzig 1880; der allgemeine Wille verliert im Einzelfall seine Natur, im Essay wörtlich zitiert",
+    "notiz": "Buch II, Kap. 3 (der allgemeine Wille ist beständig der richtige, die Volksbeschlüsse sind es nicht) und Kap. 4 (der Rechtshandel zwischen Einzelnem und Gemeinwesen, ohne Gesetz und ohne Richter); zitiert nach der Übersetzung von H. Denhardt, Leipzig 1880",
     "jahr": 1762,
     "autor": "Rousseau, Jean-Jacques",
-    "titel": "Du contrat social",
+    "titel": "Vom Gesellschaftsvertrag",
+    "url": "http://www.zeno.org/Philosophie/M/Rousseau,+Jean-Jacques/Der+Gesellschaftsvertrag",
     "typ": "primaertext"
   },
   {
