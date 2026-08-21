@@ -1,6 +1,6 @@
 ---
 title: "Der Staat, der sein Verwaltungsrecht abschaffte"
-date: 2026-08-16
+date: 2026-08-21
 teaser: "Dass man den Staat verklagen kann, ist keine Selbstverständlichkeit. Die DDR schaffte das Verwaltungsrecht ab — folgerichtig, aus einer Prämisse von Rousseau."
 substack_url: "https://luisfzl.substack.com/p/der-staat-der-sein-verwaltungsrecht?r=6fibu5&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true"
 steady_url: "https://steady.page/de/annotanda/posts/8f9e77fc-4683-4dc1-be74-49de2a76bc2f?utm_campaign=steady_sharing_button"
